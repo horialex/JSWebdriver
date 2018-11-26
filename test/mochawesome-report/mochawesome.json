@@ -1,0 +1,147 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 3,
+    "pending": 0,
+    "failures": 0,
+    "start": "2018-11-26T09:43:53.988Z",
+    "end": "2018-11-26T09:44:00.337Z",
+    "duration": 6349,
+    "testsRegistered": 3,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false,
+    "passPercentClass": "success",
+    "pendingPercentClass": "danger"
+  },
+  "suites": {
+    "uuid": "7134f035-c020-46b3-a547-b03e83d75117",
+    "title": "",
+    "fullFile": "",
+    "file": "",
+    "beforeHooks": [],
+    "afterHooks": [],
+    "tests": [],
+    "suites": [
+      {
+        "uuid": "e9d87c43-d7c8-45f0-99be-d45360afa11c",
+        "title": "library app scenario",
+        "fullFile": "/home/horatiu/Desktop/js/Webdriver/test/library.test.js",
+        "file": "/library.test.js",
+        "beforeHooks": [
+          {
+            "title": "\"before each\" hook",
+            "fullTitle": "library app scenario \"before each\" hook",
+            "timedOut": false,
+            "duration": 0,
+            "pass": false,
+            "fail": false,
+            "pending": false,
+            "code": "driver = new webdriver.Builder().forBrowser('chrome').build();\ndriver.get(\"https://library-app.firebaseapp.com/\");\ndriver.manage().window().maximize();",
+            "err": {},
+            "isRoot": false,
+            "uuid": "009f8d07-8dc6-4506-886e-a0525388f5d0",
+            "isHook": true,
+            "skipped": false
+          }
+        ],
+        "afterHooks": [
+          {
+            "title": "\"after each\" hook",
+            "fullTitle": "library app scenario \"after each\" hook",
+            "timedOut": false,
+            "duration": 0,
+            "pass": false,
+            "fail": false,
+            "pending": false,
+            "code": "driver.sleep(2000);\ndriver.quit();",
+            "err": {},
+            "isRoot": false,
+            "uuid": "64a12336-54a4-4d8d-a948-d162d6a4b046",
+            "isHook": true,
+            "skipped": false
+          }
+        ],
+        "tests": [
+          {
+            "title": "Changes Button opacitiy upon email being filled out",
+            "fullTitle": "library app scenario Changes Button opacitiy upon email being filled out",
+            "timedOut": false,
+            "duration": 1986,
+            "state": "passed",
+            "speed": "slow",
+            "pass": true,
+            "fail": false,
+            "pending": false,
+            "code": "let submitBtn = driver.findElement(By.css('.btn-lg'));\ndriver.findElement(By.css('input')).sendKeys('user@email.com');\ndriver.wait(function(){\n    return submitBtn.getCssValue('opacity').then(function(result){\n       return result === '1'; \n    });\n}, 15000);",
+            "err": {},
+            "isRoot": false,
+            "uuid": "cecf55f4-80c8-4a3b-a7d5-b0ec2c279456",
+            "isHook": false,
+            "skipped": false
+          },
+          {
+            "title": "submiting email shous an alert",
+            "fullTitle": "library app scenario submiting email shous an alert",
+            "timedOut": false,
+            "duration": 2689,
+            "state": "passed",
+            "speed": "slow",
+            "pass": true,
+            "fail": false,
+            "pending": false,
+            "code": "let submitBtn = driver.findElement(By.css('.btn-lg'));\ndriver.findElement(By.css('input')).sendKeys('us@email.com');\nsubmitBtn.click();\ndriver.wait(until.elementLocated(By.css('.alert-success')), 5000).getText().then(function(text){\n    console.log(\"Alert success text is: \" + text);\n});",
+            "err": {},
+            "isRoot": false,
+            "uuid": "ef3b778b-3bd3-49ca-9573-575bef5e85a0",
+            "isHook": false,
+            "skipped": false
+          },
+          {
+            "title": "shows a nav bar",
+            "fullTitle": "library app scenario shows a nav bar",
+            "timedOut": false,
+            "duration": 1646,
+            "state": "passed",
+            "speed": "slow",
+            "pass": true,
+            "fail": false,
+            "pending": false,
+            "code": "driver.findElement(By.css('nav')).getText().then(function(txt){\n    console.log(txt);\n});",
+            "err": {},
+            "isRoot": false,
+            "uuid": "ac765fe2-e4aa-474c-abd5-ee2ff8310741",
+            "isHook": false,
+            "skipped": false
+          }
+        ],
+        "suites": [],
+        "passes": [
+          "cecf55f4-80c8-4a3b-a7d5-b0ec2c279456",
+          "ef3b778b-3bd3-49ca-9573-575bef5e85a0",
+          "ac765fe2-e4aa-474c-abd5-ee2ff8310741"
+        ],
+        "failures": [],
+        "pending": [],
+        "skipped": [],
+        "duration": 6321,
+        "root": false,
+        "rootEmpty": false,
+        "_timeout": 50000
+      }
+    ],
+    "passes": [],
+    "failures": [],
+    "pending": [],
+    "skipped": [],
+    "duration": 0,
+    "root": true,
+    "rootEmpty": true,
+    "_timeout": 100000
+  },
+  "copyrightYear": 2018
+}
