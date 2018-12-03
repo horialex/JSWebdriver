@@ -1,49 +1,35 @@
-let webdriver = require('selenium-webdriver'),
-    { describe, it, after, before} = require('selenium-webdriver/testing');
-    By = webdriver.By,
-    until = webdriver.until;
-    let driver;
+    var { describe, it, after, before} = require('selenium-webdriver/testing');
+    var Page = require("../lib/home_page");
+    let page;
 
     
     describe('library app scenario', function(){
-        this.timeout(50000);
+        this.timeout(999999);
         
         beforeEach(function(){
-            driver = new webdriver.Builder().forBrowser('chrome').build();
-            driver.get("https://library-app.firebaseapp.com/");
-            driver.manage().window().maximize();
+            page = new Page();
+            // page.driver.manage().window().maximize();
+            // page.visit("http://library-app.firebaseapp.com");
+            page.visit(page.url);
         });
 
         afterEach(function(){
-            driver.sleep(2000);
-            driver.quit();
+            page.driver.sleep(2000);
+            page.quit();
         });
-
 
         
-        it('Changes Button opacitiy upon email being filled out', function(){
-            let submitBtn = driver.findElement(By.css('.btn-lg'));
-            driver.findElement(By.css('input')).sendKeys('user@email.com');
-            driver.wait(function(){
-                return submitBtn.getCssValue('opacity').then(function(result){
-                   return result === '1'; 
-                });
-            }, 15000);
+
+        it('Typing valid email changes button opacity to 1', function(){
+           let btn = page.requestBtn();
         });
 
-        it('submiting email shous an alert', function(){
-            let submitBtn = driver.findElement(By.css('.btn-lg'));
-            driver.findElement(By.css('input')).sendKeys('us@email.com');
-            submitBtn.click();
-            driver.wait(until.elementLocated(By.css('.alert-success')), 5000).getText().then(function(text){
-                console.log("Alert success text is: " + text);
-            });
+        it('Typing valid email enables request button', function(){
+           let btn = page.requestBtn();
         });
 
-        it('shows a nav bar', function(){
-            driver.findElement(By.css('nav')).getText().then(function(txt){
-                console.log(txt);
-            });
+        it('Clicking Request invitation triggers a confirmation box', function(){
+            let alert = page.alertSuccess();
         });
 
     });
