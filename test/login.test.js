@@ -22,7 +22,7 @@ require("chromedriver");
             driver = new webdriver.Builder().withCapabilities(webdriver.Capabilities.chrome()).setChromeOptions(o).build();
             homePage = new Home(driver);
             loginPage = new LoginPage(driver);
-            headerPage = new HeaderPage(driver)
+            headerPage = new HeaderPage(driver);
         });
 
         afterEach(function(){
@@ -34,8 +34,7 @@ require("chromedriver");
             homePage.open();
             homePage.openLoginForm();
             loginPage.login(utils.email, utils.password);
-            headerPage.selectHeaderOption('ITEMS');
-            headerPage.selectHeaderOption('USERS');
+            headerPage.headerIsPresent();
             headerPage.selectHeaderOption('ITEMS');
         });
 

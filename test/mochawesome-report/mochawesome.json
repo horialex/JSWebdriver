@@ -5,9 +5,9 @@
     "passes": 1,
     "pending": 0,
     "failures": 0,
-    "start": "2018-12-11T09:28:34.909Z",
-    "end": "2018-12-11T09:28:42.896Z",
-    "duration": 7987,
+    "start": "2018-12-11T13:09:02.425Z",
+    "end": "2018-12-11T13:09:12.449Z",
+    "duration": 10024,
     "testsRegistered": 1,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -19,7 +19,7 @@
     "pendingPercentClass": "danger"
   },
   "suites": {
-    "uuid": "732ad6da-34e7-4e2e-953d-91455d8a3d4e",
+    "uuid": "cf2b9e7c-c6e2-4726-a069-d6679d6311b8",
     "title": "",
     "fullFile": "",
     "file": "",
@@ -28,7 +28,7 @@
     "tests": [],
     "suites": [
       {
-        "uuid": "faecd932-56cc-4a28-9a6d-38123ddb4bad",
+        "uuid": "de9a7adb-0976-4478-ae38-b01963b8bfa3",
         "title": "library app scenario",
         "fullFile": "C:\\Users\\Hori\\Desktop\\js\\JSWebdriver\\test\\login.test.js",
         "file": "\\login.test.js",
@@ -37,14 +37,14 @@
             "title": "\"before each\" hook",
             "fullTitle": "library app scenario \"before each\" hook",
             "timedOut": false,
-            "duration": 101,
+            "duration": 16,
             "pass": false,
             "fail": false,
             "pending": false,
-            "code": "driver = new webdriver.Builder().withCapabilities(webdriver.Capabilities.chrome()).setChromeOptions(o).build();\nhomePage = new Home(driver);\nloginPage = new LoginPage(driver);\nheaderPage = new HeaderPage(driver)",
+            "code": "driver = new webdriver.Builder().withCapabilities(webdriver.Capabilities.chrome()).setChromeOptions(o).build();\nhomePage = new Home(driver);\nloginPage = new LoginPage(driver);\nheaderPage = new HeaderPage(driver);",
             "err": {},
             "isRoot": false,
-            "uuid": "73f954be-8898-49d7-905a-26a28bf75631",
+            "uuid": "49ab41f9-a16b-4fbc-a492-264ff37798e7",
             "isHook": true,
             "skipped": false
           }
@@ -61,7 +61,7 @@
             "code": "// homePage.quit();",
             "err": {},
             "isRoot": false,
-            "uuid": "cecb6335-88b0-46b5-8638-0c59f2953ab0",
+            "uuid": "2785831e-7df9-4ee9-a509-148a8cde8127",
             "isHook": true,
             "skipped": false
           }
@@ -71,28 +71,28 @@
             "title": "Login Test",
             "fullTitle": "library app scenario Login Test",
             "timedOut": false,
-            "duration": 7875,
+            "duration": 10000,
             "state": "passed",
             "speed": "slow",
             "pass": true,
             "fail": false,
             "pending": false,
-            "code": "homePage.open();\nhomePage.openLoginForm();\nloginPage.login(utils.email, utils.password);\nheaderPage.listItem('ITEMS');",
+            "code": "homePage.open();\nhomePage.openLoginForm();\nloginPage.login(utils.email, utils.password);\nheaderPage.headerIsPresent();\nheaderPage.selectHeaderOption('ITEMS');",
             "err": {},
             "isRoot": false,
-            "uuid": "11dafd8c-43b2-4e8f-ba55-1faa3941e470",
+            "uuid": "b6a6bc29-1c77-4dc5-990f-a0f295e5d1ce",
             "isHook": false,
             "skipped": false
           }
         ],
         "suites": [],
         "passes": [
-          "11dafd8c-43b2-4e8f-ba55-1faa3941e470"
+          "b6a6bc29-1c77-4dc5-990f-a0f295e5d1ce"
         ],
         "failures": [],
         "pending": [],
         "skipped": [],
-        "duration": 7875,
+        "duration": 10000,
         "root": false,
         "rootEmpty": false,
         "_timeout": 999999
