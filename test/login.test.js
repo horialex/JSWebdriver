@@ -1,3 +1,4 @@
+require("chromedriver");
     var { describe, it, after, before} = require('selenium-webdriver/testing');
     var webdriver = require('selenium-webdriver'),
     chrome = require('selenium-webdriver/chrome'),
@@ -8,8 +9,10 @@
     var utils = require('../utils/constants');
     var Home = require("../lib/home_page");
     var LoginPage = require("../lib/login_page");
-    var homePage, loginPage;
+    var HeaderPage = require("../lib/header_page");
+    var homePage, loginPage, headerPage;
     var driver;
+
 
  
     describe('library app scenario', function(){
@@ -19,6 +22,7 @@
             driver = new webdriver.Builder().withCapabilities(webdriver.Capabilities.chrome()).setChromeOptions(o).build();
             homePage = new Home(driver);
             loginPage = new LoginPage(driver);
+            headerPage = new HeaderPage(driver)
         });
 
         afterEach(function(){
@@ -26,11 +30,13 @@
         });
 
         
-
         it('Login Test', function(){
             homePage.open();
-            homePage.click(homePage.elements.loginBtn);
+            homePage.openLoginForm();
             loginPage.login(utils.email, utils.password);
+            headerPage.selectHeaderOption('ITEMS');
+            headerPage.selectHeaderOption('USERS');
+            headerPage.selectHeaderOption('ITEMS');
         });
 
         

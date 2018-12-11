@@ -1,25 +1,25 @@
 {
   "stats": {
     "suites": 1,
-    "tests": 0,
-    "passes": 0,
+    "tests": 1,
+    "passes": 1,
     "pending": 0,
     "failures": 0,
-    "start": "2018-12-03T11:59:14.158Z",
-    "end": "2018-12-03T11:59:14.168Z",
-    "duration": 10,
+    "start": "2018-12-11T09:28:34.909Z",
+    "end": "2018-12-11T09:28:42.896Z",
+    "duration": 7987,
     "testsRegistered": 1,
-    "passPercent": 0,
+    "passPercent": 100,
     "pendingPercent": 0,
-    "other": 2,
-    "hasOther": true,
-    "skipped": 1,
-    "hasSkipped": true,
-    "passPercentClass": "danger",
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false,
+    "passPercentClass": "success",
     "pendingPercentClass": "danger"
   },
   "suites": {
-    "uuid": "348da5af-1954-4366-a102-dfbfa1bfec77",
+    "uuid": "732ad6da-34e7-4e2e-953d-91455d8a3d4e",
     "title": "",
     "fullFile": "",
     "file": "",
@@ -28,77 +28,71 @@
     "tests": [],
     "suites": [
       {
-        "uuid": "545556d1-3748-46b8-9afe-831949e0a41c",
+        "uuid": "faecd932-56cc-4a28-9a6d-38123ddb4bad",
         "title": "library app scenario",
-        "fullFile": "/home/horatiu/Desktop/js/JSWebdriver/test/ww.test.js",
-        "file": "/ww.test.js",
+        "fullFile": "C:\\Users\\Hori\\Desktop\\js\\JSWebdriver\\test\\login.test.js",
+        "file": "\\login.test.js",
         "beforeHooks": [
           {
-            "title": "\"before each\" hook for \"Test 1\"",
-            "fullTitle": "library app scenario \"before each\" hook for \"Test 1\"",
+            "title": "\"before each\" hook",
+            "fullTitle": "library app scenario \"before each\" hook",
             "timedOut": false,
-            "duration": 1,
-            "state": "failed",
+            "duration": 101,
             "pass": false,
-            "fail": true,
+            "fail": false,
             "pending": false,
-            "code": "WWHomePage.open();",
-            "err": {
-              "message": "ReferenceError: driver is not defined",
-              "estack": "ReferenceError: driver is not defined\n    at Function.BasePage.open (/home/horatiu/Desktop/js/JSWebdriver/lib/base_page2.js:16:5)\n    at Function.value (/home/horatiu/Desktop/js/JSWebdriver/lib/ww_page.js:7:19)\n    at Context.<anonymous> (ww.test.js:10:24)"
-            },
+            "code": "driver = new webdriver.Builder().withCapabilities(webdriver.Capabilities.chrome()).setChromeOptions(o).build();\nhomePage = new Home(driver);\nloginPage = new LoginPage(driver);\nheaderPage = new HeaderPage(driver)",
+            "err": {},
             "isRoot": false,
-            "uuid": "d526f421-4a3a-416e-a7ca-79316396e11d",
+            "uuid": "73f954be-8898-49d7-905a-26a28bf75631",
             "isHook": true,
             "skipped": false
           }
         ],
         "afterHooks": [
           {
-            "title": "\"after each\" hook for \"Test 1\"",
-            "fullTitle": "library app scenario \"after each\" hook for \"Test 1\"",
+            "title": "\"after each\" hook",
+            "fullTitle": "library app scenario \"after each\" hook",
             "timedOut": false,
             "duration": 0,
-            "state": "failed",
             "pass": false,
-            "fail": true,
+            "fail": false,
             "pending": false,
-            "code": "page.driver.sleep(2000);\npage.quit();",
-            "err": {
-              "message": "TypeError: Cannot read property 'driver' of undefined",
-              "estack": "TypeError: Cannot read property 'driver' of undefined\n    at Context.<anonymous> (ww.test.js:14:18)"
-            },
+            "code": "// homePage.quit();",
+            "err": {},
             "isRoot": false,
-            "uuid": "2ff702cc-b73f-4cf2-8a7d-1175c1e81f7f",
+            "uuid": "cecb6335-88b0-46b5-8638-0c59f2953ab0",
             "isHook": true,
             "skipped": false
           }
         ],
         "tests": [
           {
-            "title": "Test 1",
-            "fullTitle": "library app scenario Test 1",
+            "title": "Login Test",
+            "fullTitle": "library app scenario Login Test",
             "timedOut": false,
-            "duration": 0,
-            "pass": false,
+            "duration": 7875,
+            "state": "passed",
+            "speed": "slow",
+            "pass": true,
             "fail": false,
             "pending": false,
-            "code": "",
+            "code": "homePage.open();\nhomePage.openLoginForm();\nloginPage.login(utils.email, utils.password);\nheaderPage.listItem('ITEMS');",
             "err": {},
             "isRoot": false,
-            "uuid": "e6b794ab-35db-4f9c-b3eb-44de33df6b5f",
+            "uuid": "11dafd8c-43b2-4e8f-ba55-1faa3941e470",
             "isHook": false,
-            "skipped": true
+            "skipped": false
           }
         ],
         "suites": [],
-        "passes": [],
+        "passes": [
+          "11dafd8c-43b2-4e8f-ba55-1faa3941e470"
+        ],
         "failures": [],
         "pending": [],
-        "skipped": [
-          "e6b794ab-35db-4f9c-b3eb-44de33df6b5f"
-        ],
-        "duration": null,
+        "skipped": [],
+        "duration": 7875,
         "root": false,
         "rootEmpty": false,
         "_timeout": 999999
@@ -111,7 +105,7 @@
     "duration": 0,
     "root": true,
     "rootEmpty": true,
-    "_timeout": 2000
+    "_timeout": 100000
   },
   "copyrightYear": 2018
 }
