@@ -26,7 +26,7 @@ require("chromedriver");
         });
 
         afterEach(function(){
-            // homePage.quit();
+            homePage.quit();
         });
 
         
@@ -36,6 +36,7 @@ require("chromedriver");
             loginPage.login(utils.email, utils.password);
             headerPage.headerIsPresent();
             headerPage.selectHeaderOption('ITEMS');
+            headerPage.selectHeaderOption('USERS');
         });
 
         
