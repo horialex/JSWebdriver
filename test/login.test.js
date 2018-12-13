@@ -28,18 +28,14 @@ require("chromedriver");
         afterEach(function(){
             homePage.quit();
         });
-
         
         it('Login Test', function(){
             homePage.open();
             homePage.openLoginForm();
             loginPage.login(utils.email, utils.password);
             headerPage.headerIsPresent();
-            headerPage.selectHeaderOption('ITEMS');
-            headerPage.selectHeaderOption('USERS');
         });
 
-        
 
     });
 
