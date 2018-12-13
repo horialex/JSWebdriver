@@ -38,6 +38,7 @@ require("chromedriver");
             loginPage.login(utils.email, utils.password);
             headerPage.selectHeaderOption("ITEMS");
             itemsPage.selectAction("Add Category");
+            itemsPage.createCategory("a");
         });
 
 
