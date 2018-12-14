@@ -26,7 +26,7 @@ require("chromedriver");
         });
 
         afterEach(function(){
-            homePage.quit();
+            // homePage.quit();
         });
         
         it('Login Test', function(){
@@ -34,6 +34,26 @@ require("chromedriver");
             homePage.openLoginForm();
             loginPage.login(utils.email, utils.password);
             headerPage.headerIsPresent();
+            headerPage.selectHeaderOption("ITEMS");
+            headerPage.selectHeaderOption("USERS");
+            headerPage.selectHeaderOption("ITEMS");
+            headerPage.selectHeaderOption("USERS");
+            headerPage.selectHeaderOption("ITEMS");
+            headerPage.selectHeaderOption("USERS");
+            headerPage.selectHeaderOption("ITEMS");
+            headerPage.selectHeaderOption("USERS");
+            headerPage.selectHeaderOption("ITEMS");
+            headerPage.selectHeaderOption("USERS");
+            headerPage.selectHeaderOption("ITEMS");
+            headerPage.selectHeaderOption("USERS");
+            headerPage.selectHeaderOption("ITEMS");
+            headerPage.selectHeaderOption("USERS");
+            headerPage.selectHeaderOption("ITEMS");
+            headerPage.selectHeaderOption("USERS");
+            headerPage.selectHeaderOption("ITEMS");
+            headerPage.selectHeaderOption("USERS");
+            headerPage.selectHeaderOption("ITEMS");
+            headerPage.selectHeaderOption("USERS");
         });
 
 
