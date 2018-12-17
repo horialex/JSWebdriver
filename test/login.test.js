@@ -15,7 +15,7 @@ var HeaderPage = require("../lib/header_page");
 var homePage, loginPage, headerPage;
 var driver;
 
-describe('library app scenario', function () {
+describe('Login', function () {
     this.timeout(999999);
 
     beforeEach(function () {
@@ -26,7 +26,7 @@ describe('library app scenario', function () {
     });
 
     afterEach(function () {
-        homePage.quit();
+        // homePage.quit();
     });
 
     it('Login Test', function () {
@@ -34,6 +34,7 @@ describe('library app scenario', function () {
         homePage.openLoginForm();
         loginPage.login(utils.email, utils.password);
         headerPage.headerIsPresent();
+        headerPage.selectHeaderOption('ITEMS');
     });
 
 
