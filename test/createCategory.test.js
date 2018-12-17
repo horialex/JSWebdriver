@@ -6,16 +6,17 @@ var webdriver = require('selenium-webdriver'),
     chrome = require('selenium-webdriver/chrome'),
     o = new chrome.Options();
 o.addArguments("start-maximized"),
-    o.addArguments('disable-infobars');
+o.addArguments('disable-infobars');
 
 var utils = require('../utils/constants');
 var Home = require("../lib/home_page");
 var LoginPage = require("../lib/login_page");
 var HeaderPage = require("../lib/header_page");
-var homePage, loginPage, headerPage;
+var ItemsPage = require("../lib/items_page");
+var homePage, loginPage, headerPage, itemsPage;
 var driver;
 
-describe('library app scenario', function () {
+describe('Create category', function () {
     this.timeout(999999);
 
     beforeEach(function () {
@@ -23,21 +24,26 @@ describe('library app scenario', function () {
         homePage = new Home(driver);
         loginPage = new LoginPage(driver);
         headerPage = new HeaderPage(driver);
+        itemsPage = new ItemsPage(driver);
     });
 
     afterEach(function () {
-        homePage.quit();
+        // homePage.quit();
     });
 
-    it('Login Test', function () {
+    it('I should be able to ceate a category', function () {
         homePage.open();
         homePage.openLoginForm();
         loginPage.login(utils.email, utils.password);
-        headerPage.headerIsPresent();
+        headerPage.selectHeaderOption('ITEMS');
+        itemsPage.selectAction('Add Category');
+        itemsPage.createCategory('vvbv');
+        itemsPage.categoryIsPresent('vvbv');
     });
 
 
 });
+
 
 
 
