@@ -37,8 +37,8 @@ describe('Create category', function () {
         loginPage.login(utils.email, utils.password);
         headerPage.selectHeaderOption('ITEMS');
         itemsPage.selectAction('Add Category');
-        itemsPage.createCategory('vvbv');
-        itemsPage.categoryIsPresent('vvbv');
+        itemsPage.createCategory('IonXZzzh');
+        // itemsPage.categoryIsPresent('Ion');
     });
 
 

@@ -26,7 +26,7 @@ describe('Login', function () {
     });
 
     afterEach(function () {
-        // homePage.quit();
+        homePage.quit();
     });
 
     it('Login Test', function () {
@@ -34,7 +34,6 @@ describe('Login', function () {
         homePage.openLoginForm();
         loginPage.login(utils.email, utils.password);
         headerPage.headerIsPresent();
-        headerPage.selectHeaderOption('ITEMS');
     });
 
 
