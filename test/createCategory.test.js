@@ -13,6 +13,7 @@ var Home = require("../lib/home_page");
 var LoginPage = require("../lib/login_page");
 var HeaderPage = require("../lib/header_page");
 var ItemsPage = require("../lib/items_page");
+var categoryFactory = require("../utils/dataFactory");
 var homePage, loginPage, headerPage, itemsPage;
 var driver;
 
@@ -25,6 +26,7 @@ describe('Create category', function () {
         loginPage = new LoginPage(driver);
         headerPage = new HeaderPage(driver);
         itemsPage = new ItemsPage(driver);
+        
     });
 
     afterEach(function () {
@@ -37,8 +39,8 @@ describe('Create category', function () {
         loginPage.login(utils.email, utils.password);
         headerPage.selectHeaderOption('ITEMS');
         itemsPage.selectAction('Add Category');
-        itemsPage.createCategory('IonXZzzh');
-        // itemsPage.categoryIsPresent('Ion');
+        itemsPage.createCategory(categoryFactory().name);
+        itemsPage.categoryIsPresent();
     });
 
 
