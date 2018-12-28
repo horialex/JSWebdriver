@@ -30,17 +30,18 @@ describe('Create category', function () {
     });
 
     afterEach(function () {
-        // homePage.quit();
+        homePage.quit();
     });
 
     it('I should be able to ceate a category', function () {
+        let categoryName = categoryFactory().name;
         homePage.open();
         homePage.openLoginForm();
         loginPage.login(utils.email, utils.password);
         headerPage.selectHeaderOption('ITEMS');
         itemsPage.selectAction('Add Category');
-        itemsPage.createCategory(categoryFactory().name);
-        itemsPage.categoryIsPresent();
+        itemsPage.createCategory(categoryName);
+        itemsPage.categoryIsPresent(categoryName);
     });
 
 
