@@ -5,8 +5,8 @@ var webdriver = require('selenium-webdriver'),
     until = webdriver.until,
     chrome = require('selenium-webdriver/chrome'),
     o = new chrome.Options();
-o.addArguments("start-maximized"),
-o.addArguments('disable-infobars');
+    o.addArguments("start-maximized"),
+    o.addArguments('disable-infobars');
 
 var utils = require('../utils/constants');
 var Home = require("../lib/home_page");
