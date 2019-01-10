@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "category": "mocha ./test/createCategory.test.js --timeout 100000",
+    "login": "mocha ./test/login.test.js --timeout 100000"
   },
   "author": "",
   "license": "ISC",
