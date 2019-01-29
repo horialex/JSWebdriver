@@ -1,0 +1,111 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2019-01-28T13:29:19.387Z",
+    "end": "2019-01-28T13:29:33.778Z",
+    "duration": 14391,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false,
+    "passPercentClass": "success",
+    "pendingPercentClass": "danger"
+  },
+  "suites": {
+    "uuid": "f183bb92-d7c0-499b-990c-a49859136e10",
+    "title": "",
+    "fullFile": "",
+    "file": "",
+    "beforeHooks": [],
+    "afterHooks": [],
+    "tests": [],
+    "suites": [
+      {
+        "uuid": "a61ec3ab-8a2c-4018-9e52-ad44016e99c1",
+        "title": "Login",
+        "fullFile": "/home/horatiu/Desktop/JSWebdriver/test/loginDriver.test.js",
+        "file": "/test/loginDriver.test.js",
+        "beforeHooks": [
+          {
+            "title": "\"before each\" hook",
+            "fullTitle": "Login \"before each\" hook",
+            "timedOut": false,
+            "duration": 2550,
+            "pass": false,
+            "fail": false,
+            "pending": false,
+            "code": "driver =  await driverUtils(process.env.npm_config_env);\nhomePage = new Home(driver);\nloginPage = new LoginPage(driver);\nheaderPage = new HeaderPage(driver);",
+            "err": {},
+            "isRoot": false,
+            "uuid": "575f7397-ff1c-4a1d-8949-ee046e55d18b",
+            "isHook": true,
+            "skipped": false
+          }
+        ],
+        "afterHooks": [
+          {
+            "title": "\"after each\" hook",
+            "fullTitle": "Login \"after each\" hook",
+            "timedOut": false,
+            "duration": 1,
+            "pass": false,
+            "fail": false,
+            "pending": false,
+            "code": "homePage.quit();",
+            "err": {},
+            "isRoot": false,
+            "uuid": "d1ab5450-290a-4b65-b32b-6c1225ad9fd2",
+            "isHook": true,
+            "skipped": false
+          }
+        ],
+        "tests": [
+          {
+            "title": "Login Test",
+            "fullTitle": "Login Login Test",
+            "timedOut": false,
+            "duration": 11831,
+            "state": "passed",
+            "speed": "slow",
+            "pass": true,
+            "fail": false,
+            "pending": false,
+            "code": "// console.log({ env: process.env.npm_config_env });\nconsole.log(process.env.npm_config_env);\nawait homePage.open();\nawait homePage.openLoginForm();\nawait loginPage.login(utils.email, utils.password);\nawait headerPage.headerIsPresent();",
+            "err": {},
+            "isRoot": false,
+            "uuid": "d91f1945-1f0f-4a6f-97ac-18ab9e0ca77e",
+            "isHook": false,
+            "skipped": false
+          }
+        ],
+        "suites": [],
+        "passes": [
+          "d91f1945-1f0f-4a6f-97ac-18ab9e0ca77e"
+        ],
+        "failures": [],
+        "pending": [],
+        "skipped": [],
+        "duration": 11831,
+        "root": false,
+        "rootEmpty": false,
+        "_timeout": 999999
+      }
+    ],
+    "passes": [],
+    "failures": [],
+    "pending": [],
+    "skipped": [],
+    "duration": 0,
+    "root": true,
+    "rootEmpty": true,
+    "_timeout": 100000
+  },
+  "copyrightYear": 2019
+}

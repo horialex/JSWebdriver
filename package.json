@@ -5,11 +5,23 @@
   "main": "index.js",
   "scripts": {
     "category": "mocha ./test/createCategory.test.js --timeout 100000",
-    "login": "mocha ./test/login.test.js --timeout 100000"
+    "login": "mocha ./test/loginDriver.test.js --timeout 100000",
+    "qa": "better-npm-run qa",
+    "test": "./node_modules/.bin/_mocha  loginDriver.test.js"
+  },
+  "betterScripts": {
+    "qa": {
+      "command": "mocha ./test/createCategory.test.js --timeout 100000",
+      "env": {
+        "NODE_ENV": "qa-env",
+        "BROWSER": "chrome"
+      }
+    }
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "better-npm-run": "^0.1.1",
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
     "chromedriver": "^2.44.1",

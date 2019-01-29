@@ -1,13 +1,8 @@
-require("chromedriver");
 var { describe, it, after, before } = require('selenium-webdriver/testing');
 var webdriver = require('selenium-webdriver'),
     By = webdriver.By,
-    until = webdriver.until,
-    chrome = require('selenium-webdriver/chrome'),
-    o = new chrome.Options();
-o.addArguments("start-maximized"),
-    o.addArguments('disable-infobars');
-
+    until = webdriver.until;
+var driverUtils = require('../utils/driverutils');
 var utils = require('../utils/constants');
 var Home = require("../lib/home_page");
 var LoginPage = require("../lib/login_page");
@@ -16,10 +11,11 @@ var homePage, loginPage, headerPage;
 var driver;
 
 describe('Login', function () {
-    this.timeout(999999);
+    this.timeout(utils.mochaTimeout);
 
-    beforeEach(function () {
-        driver = new webdriver.Builder().withCapabilities(webdriver.Capabilities.chrome()).setChromeOptions(o).build();
+    beforeEach(async function () {
+        driver = await driverUtils(process.env.npm_config_env);
+        driver.manage().window().maximize();
         homePage = new Home(driver);
         loginPage = new LoginPage(driver);
         headerPage = new HeaderPage(driver);
@@ -29,11 +25,11 @@ describe('Login', function () {
         homePage.quit();
     });
 
-    it('Login Test', function () {
-        homePage.open();
-        homePage.openLoginForm();
-        loginPage.login(utils.email, utils.password);
-        headerPage.headerIsPresent();
+    it('Login Test', async function () {
+        await homePage.open();
+        await homePage.openLoginForm();
+        await loginPage.login(utils.email, utils.password);
+        await headerPage.headerIsPresent();
     });
 
 
