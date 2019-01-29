@@ -1,8 +1,8 @@
-var { describe, it, after, before } = require('selenium-webdriver/testing');
-var driverUtils = require('../utils/driverutils');
-var utils = require('../utils/constants');
+var { describe, it} = require('selenium-webdriver/testing');
+var driverUtils = require('../configs/driverutils');
+var constants = require('../configs/constants');
 var categoryFactory = require("../utils/dataFactory");
-var appConstants = require("../utils/appConstants");
+var appConstants = require("../configs/appConstants");
 
 var Home = require("../lib/home_page");
 var LoginPage = require("../lib/login_page");
@@ -14,7 +14,7 @@ var homePage, loginPage, headerPage, itemsPage, categoryPage;
 var driver;
 
 describe('Create category', function () {
-    this.timeout(utils.mochaTimeout);
+    this.timeout(constants.mochaTimeout);
 
     beforeEach( function () {
         driver =  driverUtils(process.env.npm_config_env);
@@ -34,7 +34,7 @@ describe('Create category', function () {
         let categoryName = categoryFactory().name;
         await homePage.open();
         await homePage.openLoginForm();
-        await loginPage.login(utils.email, utils.password);
+        await loginPage.login(constants.email, constants.password);
         await headerPage.selectHeaderOption(appConstants.menuItems.items);
         await itemsPage.selectAction(appConstants.categoryActions.addCategory);
         await itemsPage.createCategory(categoryName);
