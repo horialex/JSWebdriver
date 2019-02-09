@@ -1,10 +1,10 @@
 const { describe, it, after, before } = require('selenium-webdriver/testing');
 
-const driverUtils = require('../configs/driverutils');
-const constants = require('../configs/constants');
-const HomePage = require("../lib/home_page_es6");
-const LoginPage = require("../lib/login_page_es6");
-const HeaderPage = require("../lib/header_page_es6");
+const driverUtils = require('../../configs/driverutils');
+const constants = require('../../configs/constants');
+const HomePage = require("../../lib/es6/home_page_es6");
+const LoginPage = require("../../lib/es6/login_page_es6");
+const HeaderPage = require("../../lib/es6/header_page_es6");
 var driver;
 
 describe('Login Feature', function () {
