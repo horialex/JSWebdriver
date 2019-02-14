@@ -1,14 +1,14 @@
 var { describe, it} = require('selenium-webdriver/testing');
-var driverUtils = require('../configs/driverutils');
-var constants = require('../configs/constants');
-var categoryFactory = require("../utils/dataFactory");
-var appConstants = require("../configs/appConstants");
+var driverUtils = require('../../configs/driverutils');
+var constants = require('../../configs/constants');
+var categoryFactory = require("../../utils/dataFactory");
+var appConstants = require("../../configs/appConstants");
 
-var Home = require("../lib/home_page");
-var LoginPage = require("../lib/login_page");
-var HeaderPage = require("../lib/header_page");
-var ItemsPage = require("../lib/items_page");
-var CategoryPage = require("../lib/category_page");
+var Home = require("../../lib/es5/home_page");
+var LoginPage = require("../../lib/es5/login_page");
+var HeaderPage = require("../../lib/es5/header_page");
+var ItemsPage = require("../../lib/es5/items_page");
+var CategoryPage = require("../../lib/es5/category_page");
 
 var homePage, loginPage, headerPage, itemsPage, categoryPage;
 var driver;
