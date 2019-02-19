@@ -11,5 +11,8 @@ module.exports = {
         addItem : "Add Item",
         addCategory : "Add Category",
         importItems : "Import Items"
-    }
+    },
+
+    appTitle: "Where's What"
+    
 }

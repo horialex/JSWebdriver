@@ -1,5 +1,5 @@
 const { describe, it } = require('selenium-webdriver/testing');
-const driverUtils = require('../../configs/driverutils');
+const driverUtils = require('../../utils/driverutils');
 const constants = require('../../configs/constants');
 const categoryFactory = require("../../utils/dataFactory");
 const appConstants = require("../../configs/appConstants");

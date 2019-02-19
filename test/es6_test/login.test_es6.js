@@ -1,6 +1,6 @@
 const { describe, it, after, before } = require('selenium-webdriver/testing');
 
-const driverUtils = require('../../configs/driverutils');
+const driverUtils = require('../../utils/driverutils');
 const constants = require('../../configs/constants');
 const HomePage = require("../../lib/es6/home_page_es6");
 const LoginPage = require("../../lib/es6/login_page_es6");
@@ -16,6 +16,9 @@ describe('Login Feature', function () {
         this.homePage = new HomePage(driver);
         this.loginPage = new LoginPage(driver);
         this.headerPage = new HeaderPage(driver);
+        
+       console.log(process.argv);
+
     });
 
     afterEach(function () {
