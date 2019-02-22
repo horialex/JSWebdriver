@@ -1,6 +1,5 @@
 const { describe, it } = require('selenium-webdriver/testing');
 const driverUtils = require('../../utils/driverutils');
-const constants = require('../../configs/constants');
 const categoryFactory = require("../../utils/dataFactory");
 const appConstants = require("../../configs/appConstants");
 var config = require("../../configs/index");
@@ -12,10 +11,10 @@ const ItemsPage = require("../../lib/es6/items_page_es6");
 var driver;
 
 describe('Create category', function () {
-    this.timeout(constants.mochaTimeout);
+    this.timeout(appConstants.mochaTimeout);
 
     beforeEach(function () {
-        driver = driverUtils(process.env.npm_config_env);
+        driver = await driverUtils(process.env.browser);
         driver.manage().window().maximize();
         this.homePage = new HomePage(driver);
         this.loginPage = new LoginPage(driver);

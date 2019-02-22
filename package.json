@@ -12,13 +12,13 @@
   },
   "betterScripts": {
     "qa": {
-      "command": "mocha ./test/es6_test/login.test_es6.js --timeout 100000",
+      "command": "mocha ./test/es6_test/login.test_es6.js",
       "env": {
         "NODE_ENV": "qa"
       }
     },
     "dev": {
-      "command": "mocha ./test/es6_test/login.test_es6.js --timeout 100000",
+      "command": "mocha ./test/es6_test/login.test_es6.js",
       "env": {
         "NODE_ENV": "dev"
       }
