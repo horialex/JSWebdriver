@@ -5,16 +5,22 @@
   "main": "index.js",
   "scripts": {
     "category": "mocha ./test/createCategory.test.js --timeout 100000",
-    "login": "mocha ./test/login.test.js --timeout 100000",
-    "qa": "better-npm-run qa",
+    "login": "mocha ./test/es6/login.test_es6.js --timeout 100000",
+    "qa": "bnr qa",
+    "dev": "bnr dev",
     "test": "./node_modules/.bin/_mocha  login.test.js"
   },
   "betterScripts": {
     "qa": {
-      "command": "mocha ./test/createCategory.test.js --timeout 100000",
+      "command": "mocha ./test/es6_test/login.test_es6.js --timeout 100000",
       "env": {
-        "NODE_ENV": "qa-env",
-        "BROWSER": "chrome"
+        "NODE_ENV": "qa"
+      }
+    },
+    "dev": {
+      "command": "mocha ./test/es6_test/login.test_es6.js --timeout 100000",
+      "env": {
+        "NODE_ENV": "dev"
       }
     }
   },
@@ -25,6 +31,8 @@
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
     "chromedriver": "^2.44.1",
+    "custom-env": "^1.0.0",
+    "dotenv": "^6.2.0",
     "faker": "^4.1.0",
     "geckodriver": "^1.14.1",
     "mocha": "^5.2.0",

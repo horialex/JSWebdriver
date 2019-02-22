@@ -1,5 +1,5 @@
+var config = require("../../configs/index");
 const { describe, it, after, before } = require('selenium-webdriver/testing');
-
 const driverUtils = require('../../utils/driverutils');
 const constants = require('../../configs/constants');
 const HomePage = require("../../lib/es6/home_page_es6");
@@ -16,9 +16,7 @@ describe('Login Feature', function () {
         this.homePage = new HomePage(driver);
         this.loginPage = new LoginPage(driver);
         this.headerPage = new HeaderPage(driver);
-        
-       console.log(process.argv);
-
+        console.log(config().BASE_URL);
     });
 
     afterEach(function () {
@@ -28,7 +26,7 @@ describe('Login Feature', function () {
     it('Valid Login Test', async function () {
         await this.homePage.navigate();
         await this.homePage.openLoginForm();
-        await this.loginPage.login(constants.email, constants.password);
+        await this.loginPage.login(config().ADMIN_USER, config().ADMIN_PASS);
         await this.headerPage.headerIsPresent();
     });
 

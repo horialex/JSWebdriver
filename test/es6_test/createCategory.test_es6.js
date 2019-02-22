@@ -3,7 +3,7 @@ const driverUtils = require('../../utils/driverutils');
 const constants = require('../../configs/constants');
 const categoryFactory = require("../../utils/dataFactory");
 const appConstants = require("../../configs/appConstants");
-
+var config = require("../../configs/index");
 const HomePage = require("../../lib/es6/home_page_es6");
 const LoginPage = require("../../lib/es6/login_page_es6");
 const HeaderPage = require("../../lib/es6/header_page_es6");
@@ -31,7 +31,7 @@ describe('Create category', function () {
         let categoryName = categoryFactory().name;
         await this.homePage.navigate();
         await this.homePage.openLoginForm();
-        await this.loginPage.login(constants.email, constants.password);
+        await this.loginPage.login(config().ADMIN_USER, config().ADMIN_PASS);
         await this.headerPage.selectHeaderOption(appConstants.menuItems.items);
         await this.itemsPage.selectAction(appConstants.categoryActions.addCategory);
         await this.itemsPage.createCategory(categoryName);
