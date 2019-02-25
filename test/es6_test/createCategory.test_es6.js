@@ -13,7 +13,7 @@ var driver;
 describe('Create category', function () {
     this.timeout(appConstants.mochaTimeout);
 
-    beforeEach(function () {
+    beforeEach(async function () {
         driver = await driverUtils(process.env.browser);
         driver.manage().window().maximize();
         this.homePage = new HomePage(driver);
