@@ -3,10 +3,10 @@ const driverUtils = require('../../utils/driverutils');
 const categoryFactory = require("../../utils/dataFactory");
 const appConstants = require("../../configs/appConstants");
 var config = require("../../configs/index");
-const HomePage = require("../../lib/es6/home_page_es6");
-const LoginPage = require("../../lib/es6/login_page_es6");
-const HeaderPage = require("../../lib/es6/header_page_es6");
-const ItemsPage = require("../../lib/es6/items_page_es6");
+const HomePage = require("../../project/home_page_es6");
+const LoginPage = require("../../project/login_page_es6");
+const HeaderPage = require("../../project/header_page_es6");
+const ItemsPage = require("../../project/items_page_es6");
 
 var driver;
 
