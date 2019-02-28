@@ -1,10 +1,10 @@
-var config = require("../../configs/index");
-const appConstants = require("../../configs/appConstants");
+var config = require("../configs/index");
+const appConstants = require("../configs/appConstants");
 const { describe, it, after, before } = require('selenium-webdriver/testing');
-const driverUtils = require('../../utils/driverutils');
-const HomePage = require("../../project/home_page_es6");
-const LoginPage = require("../../project/login_page_es6");
-const HeaderPage = require("../../project/header_page_es6");
+const driverUtils = require('../utils/driverutils');
+const HomePage = require("../project/home_page_es6");
+const LoginPage = require("../project/login_page_es6");
+const HeaderPage = require("../project/header_page_es6");
 var driver;
 
 describe('Login Feature', function () {

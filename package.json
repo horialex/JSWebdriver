@@ -12,7 +12,7 @@
   },
   "betterScripts": {
     "qa": {
-      "command": "mocha ./test/es6_test/",
+      "command": "mocha ./test/",
       "env": {
         "NODE_ENV": "qa"
       }

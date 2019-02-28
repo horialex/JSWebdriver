@@ -1,12 +1,12 @@
 const { describe, it } = require('selenium-webdriver/testing');
-const driverUtils = require('../../utils/driverutils');
-const categoryFactory = require("../../utils/dataFactory");
-const appConstants = require("../../configs/appConstants");
-var config = require("../../configs/index");
-const HomePage = require("../../project/home_page_es6");
-const LoginPage = require("../../project/login_page_es6");
-const HeaderPage = require("../../project/header_page_es6");
-const ItemsPage = require("../../project/items_page_es6");
+const driverUtils = require('../utils/driverutils');
+const categoryFactory = require("../utils/dataFactory");
+const appConstants = require("../configs/appConstants");
+var config = require("../configs/index");
+const HomePage = require("../project/home_page_es6");
+const LoginPage = require("../project/login_page_es6");
+const HeaderPage = require("../project/header_page_es6");
+const ItemsPage = require("../project/items_page_es6");
 
 var driver;
 
