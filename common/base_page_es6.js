@@ -55,12 +55,13 @@ class BasePage {
 
     async clickOnElementInList(listLocator, text) {
         var _this = this;
+     
         await this.driver.wait(until.elementsLocated(listLocator), 5000).then(async function () {
             await _this.driver.findElements(listLocator).then(async function (elements) {
                 await elements.forEach(async function (element) {
-                    await element.getText().then(async function (txt) {
-                        if (txt === text) {
-                            _this.waitAndClick(element);
+                    await element.getText().then(async function (txt) {  
+                        if (txt.trim() === text.trim()) {
+                           await _this.waitAndClick(element);
                         }
                     });
                 })
