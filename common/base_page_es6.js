@@ -55,13 +55,12 @@ class BasePage {
 
     async clickOnElementInList(listLocator, text) {
         var _this = this;
-     
         await this.driver.wait(until.elementsLocated(listLocator), 5000).then(async function () {
             await _this.driver.findElements(listLocator).then(async function (elements) {
                 await elements.forEach(async function (element) {
-                    await element.getText().then(async function (txt) {  
+                    await element.getText().then(async function (txt) {
                         if (txt.trim() === text.trim()) {
-                           await _this.waitAndClick(element);
+                            await _this.waitAndClick(element);
                         }
                     });
                 })
@@ -76,7 +75,9 @@ class BasePage {
             await _this.sleep(500);
             elementBlocked = this.pageActive(_this);
         }
-        element.click();
+        await _this.scrollToElement(element);
+        await _this.sleep(300);
+        await element.click();
     }
 
     //This method is not common - this is project specific - this is do avoid performing actions when the loading spinner is present
@@ -99,7 +100,9 @@ class BasePage {
             await _this.driver.findElements(listLocator).then(async function (list) {
                 list.forEach(async function (elem) {
                     await elem.getText().then(async function (elemText) {
-                        if (text === elemText) {
+                        console.log("YY " + elemText);
+                        if (text.trim() === elemText.trim()) {
+                            console.log("XXXX");
                             myElement = elem;
                         }
                     })
@@ -111,6 +114,10 @@ class BasePage {
 
     async waitForTitle(pageTitle) {
         await this.driver.wait(until.titleContains(pageTitle));
+    }
+
+    async scrollToElement(element) {
+        await this.driver.executeScript("arguments[0].scrollIntoView()", element);
     }
 
 }

@@ -11,7 +11,8 @@ class CategoryPage extends BasePage {
             itemNameInput: By.id("item_title"),
             confirmCreateItemButton: By.css("button[class='btn btn-success']"),
             categoriesList: By.css("select[id='item-category-id'] option"),
-            categoryListSelectItem: By.css("select[id='item-category-id']")
+            categoryListSelectItem: By.css("select[id='item-category-id']"),
+            itemsList: By.css("div[class*='item-collection-container'] h3 span a")
         }
     }
 
@@ -26,8 +27,8 @@ class CategoryPage extends BasePage {
         await this.clickOnElement(this.elements.confirmCreateItemButton);
     }
 
-    async navigateToCategory(categoryName) {
-        let element = await this.getElementFromList(this.elements.categoriesList, categoryName);
+    async navigateToItem(categoryName) {
+        let element = await this.getElementFromList(this.elements.itemsList, categoryName);
         await this.waitAndClick(element);
     }
 }

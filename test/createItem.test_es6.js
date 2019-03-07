@@ -38,8 +38,10 @@ describe('Create item', function () {
         await this.itemsPage.createCategory(categoryName);
         await this.itemsPage.navigateToCategory(categoryName);
         await this.categoryPage.selectAction(appConstants.categoryActions.addItem);
-
-        await this.categoryPage.createItem("TestITemZzzzffZ", "B2B");
+        await this.categoryPage.createItem("XXHori", "B2B");
+        await this.headerPage.selectHeaderOption(appConstants.menuItems.items);
+        await this.itemsPage.navigateToCategory("B2B");
+        await this.categoryPage.navigateToItem("XXHori");
     });
 });
 
