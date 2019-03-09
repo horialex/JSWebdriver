@@ -12,7 +12,8 @@ class CategoryPage extends BasePage {
             confirmCreateItemButton: By.css("button[class='btn btn-success']"),
             categoriesList: By.css("select[id='item-category-id'] option"),
             categoryListSelectItem: By.css("select[id='item-category-id']"),
-            itemsList: By.css("div[class*='item-collection-container'] h3 span a")
+            itemsList: By.css("div[class*='item-collection-container'] h3 span a"),
+            itemContainersList: By.css("div[class*='item-collection-container'] > li "),
         }
     }
 
@@ -27,9 +28,15 @@ class CategoryPage extends BasePage {
         await this.clickOnElement(this.elements.confirmCreateItemButton);
     }
 
-    async navigateToItem(categoryName) {
-        let element = await this.getElementFromList(this.elements.itemsList, categoryName);
+    async navigateToItem(itemName) {
+        let element = await this.getElementFromList(this.elements.itemsList, itemName);
         await this.waitAndClick(element);
     }
+
+    async bookItem(itemName) {
+        let bookElement = await this.getWebElementFromListWhereTextMatches(this.elements.itemContainersList, itemName, By.css('h3 span a'), By.css("button[class$='book-item']"));
+        await this.waitAndClick(bookElement);
+    }
+    
 }
 module.exports = CategoryPage;

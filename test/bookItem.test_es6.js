@@ -8,7 +8,7 @@ const LoginPage = require("../project/login_page_es6");
 const HeaderPage = require("../project/header_page_es6");
 const ItemsPage = require("../project/items_page_es6");
 const CategoryPage = require("../project/category_page_es6");
-const utils = require('../utils/helper');
+const BookingPage = require("../project/booking_page_es6.js");
 
 var driver;
 
@@ -23,12 +23,11 @@ describe('Create item', function () {
         this.headerPage = new HeaderPage(driver);
         this.itemsPage = new ItemsPage(driver);
         this.categoryPage = new CategoryPage(driver);
-
-        console.log(utils.getRandomInt(9999));
+        this.bookingPage = new BookingPage(driver);
     });
 
     afterEach(function () {
-        this.homePage.quit();
+        // this.homePage.quit();
     });
 
     it('I should be able to ceate a category', async function () {
@@ -41,10 +40,11 @@ describe('Create item', function () {
         await this.itemsPage.createCategory(categoryName);
         await this.itemsPage.navigateToCategory(categoryName);
         await this.categoryPage.selectAction(appConstants.categoryActions.addItem);
-        await this.categoryPage.createItem("XXHori", "B2B");
+        await this.categoryPage.createItem("XXHoriZ", "B2B");
         await this.headerPage.selectHeaderOption(appConstants.menuItems.items);
         await this.itemsPage.navigateToCategory("B2B");
-        await this.categoryPage.navigateToItem("XXHori");
+        await this.categoryPage.bookItem("XXHoriZ");
+        await this.bookingPage.selectYear("2022");
     });
 });
 

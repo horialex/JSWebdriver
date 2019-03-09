@@ -53,6 +53,11 @@ class BasePage {
         });
     }
 
+    async getTextFromWebElement(element){
+        let text = await this.driver.findElement(element).getText();
+        return text;
+    }
+
     async clickOnElementInList(listLocator, text) {
         var _this = this;
         await this.driver.wait(until.elementsLocated(listLocator), 5000).then(async function () {
@@ -100,10 +105,28 @@ class BasePage {
             await _this.driver.findElements(listLocator).then(async function (list) {
                 list.forEach(async function (elem) {
                     await elem.getText().then(async function (elemText) {
-                        console.log("YY " + elemText);
                         if (text.trim() === elemText.trim()) {
-                            console.log("XXXX");
                             myElement = elem;
+                        }
+                    })
+                })
+            });
+            return myElement;
+        })
+    }
+
+    async getWebElementFromListWhereTextMatches(listLocator, text, textLocator,  subElementLocator){
+        let _this = this;
+        await _this.driver.navigate().refresh();
+        return await _this.driver.wait(until.elementsLocated(listLocator)).then(async function () {
+            let myElement = null;
+            await _this.driver.findElements(listLocator).then(async function (list) {
+                list.forEach(async function (elem) {
+                    await elem.findElement(textLocator).getText().then(async function (elemText) {
+                        console.log("AFARA");
+                        if (text.trim() === elemText.trim()) {
+                            console.log("INAUNTRU");
+                            myElement = await elem.findElement(subElementLocator);
                         }
                     })
                 })
@@ -119,6 +142,8 @@ class BasePage {
     async scrollToElement(element) {
         await this.driver.executeScript("arguments[0].scrollIntoView()", element);
     }
+
+
 
 }
 module.exports = BasePage;
