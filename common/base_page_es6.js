@@ -60,8 +60,9 @@ class BasePage {
 
     async clickOnElementInList(listLocator, text) {
         var _this = this;
-        await this.driver.wait(until.elementsLocated(listLocator), 5000).then(async function () {
-            await _this.driver.findElements(listLocator).then(async function (elements) {
+        await _this.sleep(1000);    
+        await _this.driver.wait(until.elementsLocated(listLocator), 5000).then(async function () {         
+            await _this.driver.findElements(listLocator).then(async function (elements) {           
                 await elements.forEach(async function (element) {
                     await element.getText().then(async function (txt) {
                         if (txt.trim() === text.trim()) {
@@ -99,7 +100,7 @@ class BasePage {
 
     async getElementFromList(listLocator, text) {
         let _this = this;
-        await _this.driver.navigate().refresh();
+        // await _this.driver.navigate().refresh();
         return await _this.driver.wait(until.elementsLocated(listLocator)).then(async function () {
             let myElement = null;
             await _this.driver.findElements(listLocator).then(async function (list) {
@@ -123,9 +124,9 @@ class BasePage {
             await _this.driver.findElements(listLocator).then(async function (list) {
                 list.forEach(async function (elem) {
                     await elem.findElement(textLocator).getText().then(async function (elemText) {
-                        console.log("AFARA");
+                    
                         if (text.trim() === elemText.trim()) {
-                            console.log("INAUNTRU");
+                        
                             myElement = await elem.findElement(subElementLocator);
                         }
                     })
@@ -141,6 +142,10 @@ class BasePage {
 
     async scrollToElement(element) {
         await this.driver.executeScript("arguments[0].scrollIntoView()", element);
+    }
+
+    async refreshPage(){
+        await this.driver.navigate().refresh();
     }
 
 

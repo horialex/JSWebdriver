@@ -34,7 +34,8 @@ class BookingPage extends BasePage {
     }
 
     async selectMonth(month){
-
+        let monthElement = await this.getElementFromList(By.css("div.datepicker-months tbody span"), month);
+        await monthElement.click();
     }
 
     async selectDay(day){

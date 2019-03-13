@@ -12,7 +12,7 @@ const BookingPage = require("../project/booking_page_es6.js");
 
 var driver;
 
-describe('Create item', function () {
+describe('Book Item item', function () {
     this.timeout(appConstants.mochaTimeout);
 
     beforeEach(async function () {
@@ -45,6 +45,7 @@ describe('Create item', function () {
         await this.itemsPage.navigateToCategory("B2B");
         await this.categoryPage.bookItem("XXHoriZ");
         await this.bookingPage.selectYear("2022");
+        await this.bookingPage.selectMonth("May");
     });
 });
 

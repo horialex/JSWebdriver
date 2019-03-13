@@ -24,6 +24,7 @@ class ItemsPage extends BasePage {
     }
 
     async navigateToCategory(categoryName) {
+        await this.refreshPage();
         let element = await this.getElementFromList(this.elements.categoriesList, categoryName);
         await this.waitAndClick(element);
     }
