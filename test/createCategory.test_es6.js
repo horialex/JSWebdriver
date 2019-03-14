@@ -26,8 +26,9 @@ describe('Create category', function () {
         this.homePage.quit();
     });
 
-    it('I should be able to ceate a category', async function () {
+    it('As an admin user I should be able to ceate a category', async function () {
         let categoryName = categoryFactory().name;
+        
         await this.homePage.navigate();
         await this.homePage.openLoginForm();
         await this.loginPage.login(config().ADMIN_USER, config().ADMIN_PASS);

@@ -25,7 +25,7 @@ class BasePage {
         let _this = this;
         await _this.driver.wait(until.elementLocated(locator)).then(async function () {
             return _this.driver.findElement(locator).then(async function (element) {
-                await element.click();
+                await _this.waitAndClick(element);
             });
         });
     }
@@ -53,16 +53,16 @@ class BasePage {
         });
     }
 
-    async getTextFromWebElement(element){
+    async getTextFromWebElement(element) {
         let text = await this.driver.findElement(element).getText();
         return text;
     }
 
     async clickOnElementInList(listLocator, text) {
         var _this = this;
-        await _this.sleep(1000);    
-        await _this.driver.wait(until.elementsLocated(listLocator), 5000).then(async function () {         
-            await _this.driver.findElements(listLocator).then(async function (elements) {           
+        await _this.sleep(1000);
+        await _this.driver.wait(until.elementsLocated(listLocator), 5000).then(async function () {
+            await _this.driver.findElements(listLocator).then(async function (elements) {
                 await elements.forEach(async function (element) {
                     await element.getText().then(async function (txt) {
                         if (txt.trim() === text.trim()) {
@@ -100,7 +100,6 @@ class BasePage {
 
     async getElementFromList(listLocator, text) {
         let _this = this;
-        // await _this.driver.navigate().refresh();
         return await _this.driver.wait(until.elementsLocated(listLocator)).then(async function () {
             let myElement = null;
             await _this.driver.findElements(listLocator).then(async function (list) {
@@ -116,7 +115,7 @@ class BasePage {
         })
     }
 
-    async getWebElementFromListWhereTextMatches(listLocator, text, textLocator,  subElementLocator){
+    async getWebElementFromListWhereTextMatches(listLocator, text, textLocator, subElementLocator) {
         let _this = this;
         await _this.driver.navigate().refresh();
         return await _this.driver.wait(until.elementsLocated(listLocator)).then(async function () {
@@ -124,9 +123,9 @@ class BasePage {
             await _this.driver.findElements(listLocator).then(async function (list) {
                 list.forEach(async function (elem) {
                     await elem.findElement(textLocator).getText().then(async function (elemText) {
-                    
+
                         if (text.trim() === elemText.trim()) {
-                        
+
                             myElement = await elem.findElement(subElementLocator);
                         }
                     })
@@ -144,7 +143,7 @@ class BasePage {
         await this.driver.executeScript("arguments[0].scrollIntoView()", element);
     }
 
-    async refreshPage(){
+    async refreshPage() {
         await this.driver.navigate().refresh();
     }
 

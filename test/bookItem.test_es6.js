@@ -27,11 +27,13 @@ describe('Book Item item', function () {
     });
 
     afterEach(function () {
-        // this.homePage.quit();
+        this.homePage.quit();
     });
 
-    it('I should be able to ceate a category', async function () {
+    it('I should be able to book an item', async function () {
         let categoryName = categoryFactory().name;
+        let itemName = categoryFactory().name;
+
         await this.homePage.navigate();
         await this.homePage.openLoginForm();
         await this.loginPage.login(config().ADMIN_USER, config().ADMIN_PASS);
@@ -40,12 +42,14 @@ describe('Book Item item', function () {
         await this.itemsPage.createCategory(categoryName);
         await this.itemsPage.navigateToCategory(categoryName);
         await this.categoryPage.selectAction(appConstants.categoryActions.addItem);
-        await this.categoryPage.createItem("XXHoriZ", "B2B");
+        await this.categoryPage.createItem(itemName, categoryName);
         await this.headerPage.selectHeaderOption(appConstants.menuItems.items);
-        await this.itemsPage.navigateToCategory("B2B");
-        await this.categoryPage.bookItem("XXHoriZ");
-        await this.bookingPage.selectYear("2022");
-        await this.bookingPage.selectMonth("May");
+        await this.itemsPage.navigateToCategory(categoryName);
+        await this.categoryPage.bookItem(itemName);
+        await this.bookingPage.selectStartDate("Mar 15 2019");
+        await this.bookingPage.selectEndDate("Mar 16 2020");
+        await this.bookingPage.confirmBooking();
+        await this.headerPage.selectHeaderOption(appConstants.menuItems.bookings);
     });
 });
 

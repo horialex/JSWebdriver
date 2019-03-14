@@ -5,7 +5,7 @@ module.exports = {
     menuItems : {
         dashboard : "DASHBOARD",
         items : "ITEMS",
-        bookings : "BOOKGINS",
+        bookings : "BOOKINGS",
         users : "USERS"
     },
 

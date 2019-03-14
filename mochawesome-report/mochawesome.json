@@ -5,9 +5,9 @@
     "passes": 1,
     "pending": 0,
     "failures": 0,
-    "start": "2019-01-28T13:29:19.387Z",
-    "end": "2019-01-28T13:29:33.778Z",
-    "duration": 14391,
+    "start": "2019-03-14T10:39:58.996Z",
+    "end": "2019-03-14T10:40:10.992Z",
+    "duration": 11996,
     "testsRegistered": 1,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -19,7 +19,7 @@
     "pendingPercentClass": "danger"
   },
   "suites": {
-    "uuid": "f183bb92-d7c0-499b-990c-a49859136e10",
+    "uuid": "245ed484-992b-41e9-b032-aa5476e72862",
     "title": "",
     "fullFile": "",
     "file": "",
@@ -28,23 +28,23 @@
     "tests": [],
     "suites": [
       {
-        "uuid": "a61ec3ab-8a2c-4018-9e52-ad44016e99c1",
-        "title": "Login",
-        "fullFile": "/home/horatiu/Desktop/JSWebdriver/test/loginDriver.test.js",
-        "file": "/test/loginDriver.test.js",
+        "uuid": "6723b121-6e89-464b-a213-6b3ba93f47a0",
+        "title": "Create category",
+        "fullFile": "/home/horatiu/Desktop/JSWebdriver/test/createCategory.test_es6.js",
+        "file": "/test/createCategory.test_es6.js",
         "beforeHooks": [
           {
             "title": "\"before each\" hook",
-            "fullTitle": "Login \"before each\" hook",
+            "fullTitle": "Create category \"before each\" hook",
             "timedOut": false,
-            "duration": 2550,
+            "duration": 1069,
             "pass": false,
             "fail": false,
             "pending": false,
-            "code": "driver =  await driverUtils(process.env.npm_config_env);\nhomePage = new Home(driver);\nloginPage = new LoginPage(driver);\nheaderPage = new HeaderPage(driver);",
+            "code": "driver = await driverUtils(process.env.browser);\ndriver.manage().window().maximize();\nthis.homePage = new HomePage(driver);\nthis.loginPage = new LoginPage(driver);\nthis.headerPage = new HeaderPage(driver);\nthis.itemsPage = new ItemsPage(driver);",
             "err": {},
             "isRoot": false,
-            "uuid": "575f7397-ff1c-4a1d-8949-ee046e55d18b",
+            "uuid": "a28decc3-ebf5-4119-b9d7-2e0c81970054",
             "isHook": true,
             "skipped": false
           }
@@ -52,50 +52,50 @@
         "afterHooks": [
           {
             "title": "\"after each\" hook",
-            "fullTitle": "Login \"after each\" hook",
+            "fullTitle": "Create category \"after each\" hook",
             "timedOut": false,
-            "duration": 1,
+            "duration": 0,
             "pass": false,
             "fail": false,
             "pending": false,
-            "code": "homePage.quit();",
+            "code": "this.homePage.quit();",
             "err": {},
             "isRoot": false,
-            "uuid": "d1ab5450-290a-4b65-b32b-6c1225ad9fd2",
+            "uuid": "73fd625d-828e-4718-be5f-068cd9c6df2b",
             "isHook": true,
             "skipped": false
           }
         ],
         "tests": [
           {
-            "title": "Login Test",
-            "fullTitle": "Login Login Test",
+            "title": "As an admin user I should be able to ceate a category",
+            "fullTitle": "Create category As an admin user I should be able to ceate a category",
             "timedOut": false,
-            "duration": 11831,
+            "duration": 10910,
             "state": "passed",
             "speed": "slow",
             "pass": true,
             "fail": false,
             "pending": false,
-            "code": "// console.log({ env: process.env.npm_config_env });\nconsole.log(process.env.npm_config_env);\nawait homePage.open();\nawait homePage.openLoginForm();\nawait loginPage.login(utils.email, utils.password);\nawait headerPage.headerIsPresent();",
+            "code": "let categoryName = categoryFactory().name;\n\nawait this.homePage.navigate();\nawait this.homePage.openLoginForm();\nawait this.loginPage.login(config().ADMIN_USER, config().ADMIN_PASS);\nawait this.headerPage.selectHeaderOption(appConstants.menuItems.items);\nawait this.itemsPage.selectAction(appConstants.categoryActions.addCategory);\nawait this.itemsPage.createCategory(categoryName);\nawait this.itemsPage.navigateToCategory(categoryName);",
             "err": {},
             "isRoot": false,
-            "uuid": "d91f1945-1f0f-4a6f-97ac-18ab9e0ca77e",
+            "uuid": "2e96895b-149f-4c9d-8ac1-2c0557a17929",
             "isHook": false,
             "skipped": false
           }
         ],
         "suites": [],
         "passes": [
-          "d91f1945-1f0f-4a6f-97ac-18ab9e0ca77e"
+          "2e96895b-149f-4c9d-8ac1-2c0557a17929"
         ],
         "failures": [],
         "pending": [],
         "skipped": [],
-        "duration": 11831,
+        "duration": 10910,
         "root": false,
         "rootEmpty": false,
-        "_timeout": 999999
+        "_timeout": 100000
       }
     ],
     "passes": [],
@@ -105,7 +105,7 @@
     "duration": 0,
     "root": true,
     "rootEmpty": true,
-    "_timeout": 100000
+    "_timeout": 2000
   },
   "copyrightYear": 2019
 }
