@@ -1,7 +1,24 @@
-var faker = require('faker');
-var categoryFactory = function () {
-    return {
-        name: faker.random.words(1)
+let faker = require('faker');
+let utils = require("./helper.js");
+
+
+module.exports = {
+    categoryFactory: function () {
+        return {
+            name: faker.random.words(1)
+        }
+    },
+
+    itemFactory: function () {
+        return {
+            name: faker.random.word(1)
+        }
+    },
+
+    bookingFactory: function () {
+        return {
+            startDate: utils.getCurrentDate(),
+            endDate: utils.getDateInFuture(3)
+        }
     }
 }
-module.exports = categoryFactory;

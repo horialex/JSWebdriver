@@ -1,7 +1,7 @@
 module.exports = {
 
 
-    mochaTimeout: 100000,
+    mochaTimeout: 9999999,
     menuItems : {
         dashboard : "DASHBOARD",
         items : "ITEMS",

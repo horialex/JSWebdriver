@@ -5,9 +5,9 @@
     "passes": 1,
     "pending": 0,
     "failures": 0,
-    "start": "2019-03-14T10:39:58.996Z",
-    "end": "2019-03-14T10:40:10.992Z",
-    "duration": 11996,
+    "start": "2019-04-02T06:42:57.612Z",
+    "end": "2019-04-02T06:43:12.488Z",
+    "duration": 14876,
     "testsRegistered": 1,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -19,7 +19,7 @@
     "pendingPercentClass": "danger"
   },
   "suites": {
-    "uuid": "245ed484-992b-41e9-b032-aa5476e72862",
+    "uuid": "0f7fdcf3-d372-473b-8cd5-6d878c600e53",
     "title": "",
     "fullFile": "",
     "file": "",
@@ -28,7 +28,7 @@
     "tests": [],
     "suites": [
       {
-        "uuid": "6723b121-6e89-464b-a213-6b3ba93f47a0",
+        "uuid": "4d32fbeb-d979-4547-9eda-0cb889e7b5a9",
         "title": "Create category",
         "fullFile": "/home/horatiu/Desktop/JSWebdriver/test/createCategory.test_es6.js",
         "file": "/test/createCategory.test_es6.js",
@@ -37,14 +37,14 @@
             "title": "\"before each\" hook",
             "fullTitle": "Create category \"before each\" hook",
             "timedOut": false,
-            "duration": 1069,
+            "duration": 992,
             "pass": false,
             "fail": false,
             "pending": false,
             "code": "driver = await driverUtils(process.env.browser);\ndriver.manage().window().maximize();\nthis.homePage = new HomePage(driver);\nthis.loginPage = new LoginPage(driver);\nthis.headerPage = new HeaderPage(driver);\nthis.itemsPage = new ItemsPage(driver);",
             "err": {},
             "isRoot": false,
-            "uuid": "a28decc3-ebf5-4119-b9d7-2e0c81970054",
+            "uuid": "c76ee1cd-5554-4759-bc05-b1dfd0cda163",
             "isHook": true,
             "skipped": false
           }
@@ -61,7 +61,7 @@
             "code": "this.homePage.quit();",
             "err": {},
             "isRoot": false,
-            "uuid": "73fd625d-828e-4718-be5f-068cd9c6df2b",
+            "uuid": "bee57f9f-8605-40fc-8644-4d9051e4b84b",
             "isHook": true,
             "skipped": false
           }
@@ -71,31 +71,31 @@
             "title": "As an admin user I should be able to ceate a category",
             "fullTitle": "Create category As an admin user I should be able to ceate a category",
             "timedOut": false,
-            "duration": 10910,
+            "duration": 13870,
             "state": "passed",
             "speed": "slow",
             "pass": true,
             "fail": false,
             "pending": false,
-            "code": "let categoryName = categoryFactory().name;\n\nawait this.homePage.navigate();\nawait this.homePage.openLoginForm();\nawait this.loginPage.login(config().ADMIN_USER, config().ADMIN_PASS);\nawait this.headerPage.selectHeaderOption(appConstants.menuItems.items);\nawait this.itemsPage.selectAction(appConstants.categoryActions.addCategory);\nawait this.itemsPage.createCategory(categoryName);\nawait this.itemsPage.navigateToCategory(categoryName);",
+            "code": "let categoryName = categoryFactory().name; \nawait this.homePage.navigate();\nawait this.homePage.openLoginForm();\nawait this.loginPage.login(config().ADMIN_USER, config().ADMIN_PASS);\nawait this.headerPage.selectHeaderOption(appConstants.menuItems.items);\nawait this.itemsPage.selectAction(appConstants.categoryActions.addCategory);\nawait this.itemsPage.createCategory(categoryName);\nawait this.itemsPage.navigateToCategory(categoryName);",
             "err": {},
             "isRoot": false,
-            "uuid": "2e96895b-149f-4c9d-8ac1-2c0557a17929",
+            "uuid": "50133e6c-a135-40a1-85bb-85d61217d379",
             "isHook": false,
             "skipped": false
           }
         ],
         "suites": [],
         "passes": [
-          "2e96895b-149f-4c9d-8ac1-2c0557a17929"
+          "50133e6c-a135-40a1-85bb-85d61217d379"
         ],
         "failures": [],
         "pending": [],
         "skipped": [],
-        "duration": 10910,
+        "duration": 13870,
         "root": false,
         "rootEmpty": false,
-        "_timeout": 100000
+        "_timeout": 9999999
       }
     ],
     "passes": [],

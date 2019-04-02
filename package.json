@@ -18,7 +18,7 @@
       }
     },
     "dev": {
-      "command": "mocha ./test/es6_test/",
+      "command": "mocha ./test/bookItem.test_es6.js",
       "env": {
         "NODE_ENV": "dev"
       }

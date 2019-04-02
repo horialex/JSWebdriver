@@ -1,6 +1,6 @@
 const { describe, it } = require('selenium-webdriver/testing');
 const driverUtils = require('../utils/driverutils');
-const categoryFactory = require("../utils/dataFactory");
+const factory = require("../utils/dataFactory");
 const appConstants = require("../configs/appConstants");
 var config = require("../configs/index");
 const HomePage = require("../project/home_page_es6");
@@ -23,8 +23,6 @@ describe('Create item', function () {
         this.headerPage = new HeaderPage(driver);
         this.itemsPage = new ItemsPage(driver);
         this.categoryPage = new CategoryPage(driver);
-
-        console.log(utils.getRandomInt(9999));
     });
 
     afterEach(function () {
@@ -32,7 +30,9 @@ describe('Create item', function () {
     });
 
     it('I should be able to ceate a category', async function () {
-        let categoryName = categoryFactory().name;
+        let categoryName = factory.categoryFactory().name; 
+        let itemName = factory.itemFactory().name; 
+
         await this.homePage.navigate();
         await this.homePage.openLoginForm();
         await this.loginPage.login(config().ADMIN_USER, config().ADMIN_PASS);
@@ -41,10 +41,10 @@ describe('Create item', function () {
         await this.itemsPage.createCategory(categoryName);
         await this.itemsPage.navigateToCategory(categoryName);
         await this.categoryPage.selectAction(appConstants.categoryActions.addItem);
-        await this.categoryPage.createItem("XXHori", "B2B");
+        await this.categoryPage.createItem(itemName, categoryName);
         await this.headerPage.selectHeaderOption(appConstants.menuItems.items);
-        await this.itemsPage.navigateToCategory("B2B");
-        await this.categoryPage.navigateToItem("XXHori");
+        await this.itemsPage.navigateToCategory(categoryName);
+        await this.categoryPage.navigateToItem(itemName);
     });
 });
 

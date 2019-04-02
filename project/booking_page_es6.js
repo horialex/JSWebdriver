@@ -58,7 +58,7 @@ class BookingPage extends BasePage {
         d.click();
     }
 
-    async confirmBooking(){
+    async confirmBooking() {
         await this.clickOnElement(this.elements.saveBookingButton);
     }
 

@@ -1,6 +1,6 @@
 const { describe, it } = require('selenium-webdriver/testing');
 const driverUtils = require('../utils/driverutils');
-const categoryFactory = require("../utils/dataFactory");
+const factory = require("../utils/dataFactory");
 const appConstants = require("../configs/appConstants");
 var config = require("../configs/index");
 const HomePage = require("../project/home_page_es6");
@@ -14,7 +14,6 @@ var driver;
 
 describe('Book Item item', function () {
     this.timeout(appConstants.mochaTimeout);
-
     beforeEach(async function () {
         driver = await driverUtils(process.env.browser);
         driver.manage().window().maximize();
@@ -31,9 +30,12 @@ describe('Book Item item', function () {
     });
 
     it('I should be able to book an item', async function () {
-        let categoryName = categoryFactory().name;
-        let itemName = categoryFactory().name;
-
+        let categoryName = factory.categoryFactory().name; 
+        let itemName = factory.itemFactory().name; 
+        let booking = factory.bookingFactory();
+       
+        console.log("Current date is " + booking.startDate);
+        console.log("futureDate date is " + booking.endDate);
         await this.homePage.navigate();
         await this.homePage.openLoginForm();
         await this.loginPage.login(config().ADMIN_USER, config().ADMIN_PASS);
@@ -46,8 +48,8 @@ describe('Book Item item', function () {
         await this.headerPage.selectHeaderOption(appConstants.menuItems.items);
         await this.itemsPage.navigateToCategory(categoryName);
         await this.categoryPage.bookItem(itemName);
-        await this.bookingPage.selectStartDate("Mar 15 2019");
-        await this.bookingPage.selectEndDate("Mar 16 2020");
+        await this.bookingPage.selectStartDate(booking.startDate);
+        await this.bookingPage.selectEndDate(booking.endDate);
         await this.bookingPage.confirmBooking();
         await this.headerPage.selectHeaderOption(appConstants.menuItems.bookings);
     });

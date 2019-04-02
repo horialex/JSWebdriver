@@ -1,6 +1,6 @@
 const { describe, it } = require('selenium-webdriver/testing');
 const driverUtils = require('../utils/driverutils');
-const categoryFactory = require("../utils/dataFactory");
+const factory = require("../utils/dataFactory");
 const appConstants = require("../configs/appConstants");
 var config = require("../configs/index");
 const HomePage = require("../project/home_page_es6");
@@ -27,8 +27,8 @@ describe('Create category', function () {
     });
 
     it('As an admin user I should be able to ceate a category', async function () {
-        let categoryName = categoryFactory().name;
-        
+        let categoryName = factory.categoryFactory().name; 
+       
         await this.homePage.navigate();
         await this.homePage.openLoginForm();
         await this.loginPage.login(config().ADMIN_USER, config().ADMIN_PASS);
