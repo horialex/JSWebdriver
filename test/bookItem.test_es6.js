@@ -9,6 +9,7 @@ const HeaderPage = require("../project/header_page_es6");
 const ItemsPage = require("../project/items_page_es6");
 const CategoryPage = require("../project/category_page_es6");
 const BookingPage = require("../project/booking_page_es6.js");
+const BookingsPage = require("../project/bookings_page_es6.js");
 
 var driver;
 
@@ -23,19 +24,19 @@ describe('Book Item item', function () {
         this.itemsPage = new ItemsPage(driver);
         this.categoryPage = new CategoryPage(driver);
         this.bookingPage = new BookingPage(driver);
+        this.bookingsPage = new BookingsPage(driver);
     });
 
     afterEach(function () {
-        this.homePage.quit();
+        // this.homePage.quit();
     });
 
     it('I should be able to book an item', async function () {
         let categoryName = factory.categoryFactory().name; 
         let itemName = factory.itemFactory().name; 
         let booking = factory.bookingFactory();
-       
-        console.log("Current date is " + booking.startDate);
-        console.log("futureDate date is " + booking.endDate);
+        booking.itemName = itemName;
+     
         await this.homePage.navigate();
         await this.homePage.openLoginForm();
         await this.loginPage.login(config().ADMIN_USER, config().ADMIN_PASS);
@@ -52,6 +53,8 @@ describe('Book Item item', function () {
         await this.bookingPage.selectEndDate(booking.endDate);
         await this.bookingPage.confirmBooking();
         await this.headerPage.selectHeaderOption(appConstants.menuItems.bookings);
+        await this.bookingsPage.selectBookingsAction(appConstants.bookingActions.myBookings);
+        await this.bookingsPage.validateBooking(booking);    
     });
 });
 

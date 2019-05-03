@@ -15,6 +15,13 @@ module.exports = {
         importItems : "Import Items"
     },
 
+    bookingActions : {
+        bookingRequests : "Booking Requests",
+        overdueBookings : "Overdue Bookings",
+        myBookings : "My Bookings",
+        allBookings : "All Bookings"
+    },
+
     appTitle: "Where's What"
     
 }

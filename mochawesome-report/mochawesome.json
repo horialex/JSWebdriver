@@ -2,24 +2,24 @@
   "stats": {
     "suites": 1,
     "tests": 1,
-    "passes": 1,
+    "passes": 0,
     "pending": 0,
-    "failures": 0,
-    "start": "2019-04-02T06:42:57.612Z",
-    "end": "2019-04-02T06:43:12.488Z",
-    "duration": 14876,
+    "failures": 1,
+    "start": "2019-05-03T07:53:13.796Z",
+    "end": "2019-05-03T07:53:55.258Z",
+    "duration": 41462,
     "testsRegistered": 1,
-    "passPercent": 100,
+    "passPercent": 0,
     "pendingPercent": 0,
     "other": 0,
     "hasOther": false,
     "skipped": 0,
     "hasSkipped": false,
-    "passPercentClass": "success",
+    "passPercentClass": "danger",
     "pendingPercentClass": "danger"
   },
   "suites": {
-    "uuid": "0f7fdcf3-d372-473b-8cd5-6d878c600e53",
+    "uuid": "a8eb778d-4a71-43fb-99c5-81137a136c25",
     "title": "",
     "fullFile": "",
     "file": "",
@@ -28,23 +28,23 @@
     "tests": [],
     "suites": [
       {
-        "uuid": "4d32fbeb-d979-4547-9eda-0cb889e7b5a9",
-        "title": "Create category",
-        "fullFile": "/home/horatiu/Desktop/JSWebdriver/test/createCategory.test_es6.js",
-        "file": "/test/createCategory.test_es6.js",
+        "uuid": "42a34c63-41e6-4c26-8b9a-8a0e3563236d",
+        "title": "Book Item item",
+        "fullFile": "/home/horatiu/Desktop/JSWebdriver/test/bookItem.test_es6.js",
+        "file": "/test/bookItem.test_es6.js",
         "beforeHooks": [
           {
             "title": "\"before each\" hook",
-            "fullTitle": "Create category \"before each\" hook",
+            "fullTitle": "Book Item item \"before each\" hook",
             "timedOut": false,
-            "duration": 992,
+            "duration": 976,
             "pass": false,
             "fail": false,
             "pending": false,
-            "code": "driver = await driverUtils(process.env.browser);\ndriver.manage().window().maximize();\nthis.homePage = new HomePage(driver);\nthis.loginPage = new LoginPage(driver);\nthis.headerPage = new HeaderPage(driver);\nthis.itemsPage = new ItemsPage(driver);",
+            "code": "driver = await driverUtils(process.env.browser);\ndriver.manage().window().maximize();\nthis.homePage = new HomePage(driver);\nthis.loginPage = new LoginPage(driver);\nthis.headerPage = new HeaderPage(driver);\nthis.itemsPage = new ItemsPage(driver);\nthis.categoryPage = new CategoryPage(driver);\nthis.bookingPage = new BookingPage(driver);\nthis.bookingsPage = new BookingsPage(driver);",
             "err": {},
             "isRoot": false,
-            "uuid": "c76ee1cd-5554-4759-bc05-b1dfd0cda163",
+            "uuid": "bb5bb1f3-26e6-4483-90a2-2ccf6cb043a3",
             "isHook": true,
             "skipped": false
           }
@@ -52,47 +52,50 @@
         "afterHooks": [
           {
             "title": "\"after each\" hook",
-            "fullTitle": "Create category \"after each\" hook",
+            "fullTitle": "Book Item item \"after each\" hook",
             "timedOut": false,
             "duration": 0,
             "pass": false,
             "fail": false,
             "pending": false,
-            "code": "this.homePage.quit();",
+            "code": "// this.homePage.quit();",
             "err": {},
             "isRoot": false,
-            "uuid": "bee57f9f-8605-40fc-8644-4d9051e4b84b",
+            "uuid": "79b3cc2f-23a5-44a4-8383-6b45e1229ee2",
             "isHook": true,
             "skipped": false
           }
         ],
         "tests": [
           {
-            "title": "As an admin user I should be able to ceate a category",
-            "fullTitle": "Create category As an admin user I should be able to ceate a category",
+            "title": "I should be able to book an item",
+            "fullTitle": "Book Item item I should be able to book an item",
             "timedOut": false,
-            "duration": 13870,
-            "state": "passed",
-            "speed": "slow",
-            "pass": true,
-            "fail": false,
+            "duration": 40473,
+            "state": "failed",
+            "pass": false,
+            "fail": true,
             "pending": false,
-            "code": "let categoryName = categoryFactory().name; \nawait this.homePage.navigate();\nawait this.homePage.openLoginForm();\nawait this.loginPage.login(config().ADMIN_USER, config().ADMIN_PASS);\nawait this.headerPage.selectHeaderOption(appConstants.menuItems.items);\nawait this.itemsPage.selectAction(appConstants.categoryActions.addCategory);\nawait this.itemsPage.createCategory(categoryName);\nawait this.itemsPage.navigateToCategory(categoryName);",
-            "err": {},
+            "code": "let categoryName = factory.categoryFactory().name; \nlet itemName = factory.itemFactory().name; \nlet booking = factory.bookingFactory();\nbooking.itemName = itemName;\n     \nawait this.homePage.navigate();\nawait this.homePage.openLoginForm();\nawait this.loginPage.login(config().ADMIN_USER, config().ADMIN_PASS);\nawait this.headerPage.selectHeaderOption(appConstants.menuItems.items);\nawait this.itemsPage.selectAction(appConstants.categoryActions.addCategory);\nawait this.itemsPage.createCategory(categoryName);\nawait this.itemsPage.navigateToCategory(categoryName);\nawait this.categoryPage.selectAction(appConstants.categoryActions.addItem);\nawait this.categoryPage.createItem(itemName, categoryName);\nawait this.headerPage.selectHeaderOption(appConstants.menuItems.items);\nawait this.itemsPage.navigateToCategory(categoryName);\nawait this.categoryPage.bookItem(itemName);\nawait this.bookingPage.selectStartDate(booking.startDate);\nawait this.bookingPage.selectEndDate(booking.endDate);\nawait this.bookingPage.confirmBooking();\nawait this.headerPage.selectHeaderOption(appConstants.menuItems.bookings);\nawait this.bookingsPage.selectBookingsAction(appConstants.bookingActions.myBookings);\nawait this.bookingsPage.validateBooking(booking);",
+            "err": {
+              "message": "AssertionError [ERR_ASSERTION]: The booking was not found in the bookings list",
+              "estack": "AssertionError [ERR_ASSERTION]: The booking was not found in the bookings list\n    at BookingsPage.validateBooking (project/bookings_page_es6.js:34:5)\n    at process.internalTickCallback (internal/process/next_tick.js:77:7)\nFrom: Task: Book Item item I should be able to book an item\n    at Context.ret (node_modules/selenium-webdriver/testing/index.js:182:10)\n    at process.internalTickCallback (internal/process/next_tick.js:77:7)",
+              "diff": "- false\n+ true\n"
+            },
             "isRoot": false,
-            "uuid": "50133e6c-a135-40a1-85bb-85d61217d379",
+            "uuid": "8c1e042c-a823-47bd-b38d-83f007d5916b",
             "isHook": false,
             "skipped": false
           }
         ],
         "suites": [],
-        "passes": [
-          "50133e6c-a135-40a1-85bb-85d61217d379"
+        "passes": [],
+        "failures": [
+          "8c1e042c-a823-47bd-b38d-83f007d5916b"
         ],
-        "failures": [],
         "pending": [],
         "skipped": [],
-        "duration": 13870,
+        "duration": 40473,
         "root": false,
         "rootEmpty": false,
         "_timeout": 9999999

@@ -135,6 +135,8 @@ class BasePage {
         })
     }
 
+    
+
     async waitForTitle(pageTitle) {
         await this.driver.wait(until.titleContains(pageTitle));
     }
