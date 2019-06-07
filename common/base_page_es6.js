@@ -100,18 +100,22 @@ class BasePage {
 
     async clickWhenClickable(element) {
         let _this = this;
-      
-
-        await _this.driver.findElement(By.css("div[class='ww-loading']"))
-        .then(async function (result) {
-            console.log("B");
-          await _this.clickWhenClickable(element);
-        }).catch(async function (error) {
-            console.log("C");
-             await _this.scrollToElement(element);
-             await _this.sleep(300);
-           await element.click();
-        });
+        
+        let contor = 0;
+        while(contor < 10){
+            await _this.driver.findElement(By.css("div[class='ww-loading']"))
+            .then(async function (result) {
+            _this.sleep(1000);
+           
+    
+            }).catch(async function (error) {
+                contor=10;
+              
+            });
+            contor++;
+        }
+        element.click();
+        
     }
 
     //This method is not common - this is project specific - this is do avoid performing actions when the loading spinner is present
