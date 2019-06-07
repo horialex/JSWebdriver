@@ -19,7 +19,9 @@ class BookingPage extends BasePage {
         let year = startDate.split(",")[0].split(" ")[2];
         let month = startDate.split(",")[0].split(" ")[0];
         let day = startDate.split(",")[0].split(" ")[1];
+        console.log("Intra in booking start Date");
         await this.clickOnElement(this.elements.startBookingDatePicker);
+        console.log("Dupa ce intra in booking start Date");
         await this.selectYear(year);
         await this.selectMonth(month)
         await this.selectDay(day);
@@ -49,13 +51,15 @@ class BookingPage extends BasePage {
 
     async selectMonth(month) {
         let m = await this.getElementFromList(By.css("div[class*='picker-open'] div.datepicker-months tbody span"), month);
-        await m.click();
+        await this.waitAndClick(m);
+        // await m.click();
     }
 
 
     async selectDay(day) {
         let d = await this.getElementFromList(By.css("div[class*='picker-open'] div.datepicker-days tbody tr td[class*='day']"), day);
-        d.click();
+        await this.waitAndClick(d);
+        // d.click();
     }
 
     async confirmBooking() {

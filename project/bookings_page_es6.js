@@ -45,15 +45,6 @@ class BookingsPage extends BasePage {
           await elem.findElement(_this.elements.bookingsItemName).getText().then(async function (elemText) {
             booking.itemName = await elemText;
           });
-          // await elem.findElement(_this.elements.bookingsItemStartDate).getText().then(async function (startDateText) {
-          //   booking.startDate = await startDateText;
-          // });
-          // await elem.findElement(_this.elements.bookingsItemEndDate).getText().then(async function (elemText) {
-          //   booking.endDate = await elemText;
-          // })
-          // await elem.findElement(_this.elements.bookingsUser).getText().then(async function (elemText) {
-          //   booking.user = await elemText;
-          // })
           await actualbookignsArray.push(booking);
         })
       })

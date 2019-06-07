@@ -24,8 +24,8 @@ class BasePage {
     async clickOnElement(locator) {
         let _this = this;
         await _this.driver.wait(until.elementLocated(locator)).then(async function () {
-            return _this.driver.findElement(locator).then(async function (element) {
-                await _this.waitAndClick(element);
+            await _this.driver.findElement(locator).then(async function (element) {
+                await _this.clickWhenClickable(element);
             });
         });
     }
@@ -66,7 +66,7 @@ class BasePage {
                 await elements.forEach(async function (element) {
                     await element.getText().then(async function (txt) {
                         if (txt.trim() === text.trim()) {
-                            await _this.waitAndClick(element);
+                            await _this.clickWhenClickable(element);
                         }
                     });
                 })
@@ -74,28 +74,60 @@ class BasePage {
         });
     }
 
+    //TREBUIE RESCRISA
     async waitAndClick(element) {
+        // let _this = this;
+        // await _this.scrollToElement(element);
+        // await _this.clickWhenClickable(element);
+        // await _this.sleep(300);
+        // // let _this = this;
+        // // if(await _this.pageActive()){
+        // //     this.waitAndClick(element); 
+        // // }else{
+        // // await _this.scrollToElement(element);
+        // // await _this.sleep(300);
+        // // await element.click();
+        // // }
+        // // while (await _this.pageActive()) {
+        // //     console.log("A");
+        // //     // await _this.sleep(50);
+        // //     console.log("AA");
+        // // }
+        // await _this.scrollToElement(element);
+        // await _this.sleep(300);
+   
+    }
+
+    async clickWhenClickable(element) {
         let _this = this;
-        let elementBlocked = true;
-        while (elementBlocked) {
-            await _this.sleep(500);
-            elementBlocked = this.pageActive(_this);
-        }
-        await _this.scrollToElement(element);
-        await _this.sleep(300);
-        await element.click();
+      
+
+        await _this.driver.findElement(By.css("div[class='ww-loading']"))
+        .then(async function (result) {
+            console.log("B");
+          await _this.clickWhenClickable(element);
+        }).catch(async function (error) {
+            console.log("C");
+             await _this.scrollToElement(element);
+             await _this.sleep(300);
+           await element.click();
+        });
     }
 
     //This method is not common - this is project specific - this is do avoid performing actions when the loading spinner is present
     // When the spinner is present the page is blocked due to executing ajax requests
-    pageActive() {
+    async pageInActive() {
         let _this = this;
-        _this.driver.findElement(By.css("div[class='ww-loading']"))
+        let flag = false;
+        await _this.driver.findElement(By.css("div[class='ww-loading']"))
             .then(function (result) {
-                return true;
+                console.log("B");
+                flag = true;
             }).catch(function (error) {
-                return false;
+                console.log("C");
+                flag = false;
             });
+        return flag;
     }
 
     async getElementFromList(listLocator, text) {
@@ -135,7 +167,7 @@ class BasePage {
         })
     }
 
-    
+
 
     async waitForTitle(pageTitle) {
         await this.driver.wait(until.titleContains(pageTitle));
