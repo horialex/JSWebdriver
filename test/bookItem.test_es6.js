@@ -1,3 +1,4 @@
+require("chromedriver");
 const { describe, it } = require('selenium-webdriver/testing');
 const driverUtils = require('../utils/driverutils');
 const factory = require("../utils/dataFactory");
@@ -11,12 +12,22 @@ const CategoryPage = require("../project/category_page_es6");
 const BookingPage = require("../project/booking_page_es6.js");
 const BookingsPage = require("../project/bookings_page_es6.js");
 
+
+var o;
+var webdriver = require('selenium-webdriver'),
+    chrome = require('selenium-webdriver/chrome');
+
+
 var driver;
 
 describe('Book Item item', function () {
     this.timeout(appConstants.mochaTimeout);
     beforeEach(async function () {
-        driver = await driverUtils(process.env.browser);
+        o = new chrome.Options();
+        o.addArguments("start-maximized"),
+            o.addArguments('disable-infobars');
+        // driver = await driverUtils(process.env.browser);
+        driver = new webdriver.Builder().withCapabilities(webdriver.Capabilities.chrome()).setChromeOptions(o).build();
         driver.manage().window().maximize();
         this.homePage = new HomePage(driver);
         this.loginPage = new LoginPage(driver);
@@ -32,29 +43,40 @@ describe('Book Item item', function () {
     });
 
     it('I should be able to book an item', async function () {
-        let categoryName = factory.categoryFactory().name; 
-        let itemName = factory.itemFactory().name; 
+        let categoryName = factory.categoryFactory().name;
+        let itemName = factory.itemFactory().name;
         let booking = factory.bookingFactory();
         booking.itemName = itemName;
-     
+
         await this.homePage.navigate();
         await this.homePage.openLoginForm();
         await this.loginPage.login(config().ADMIN_USER, config().ADMIN_PASS);
+        // await this.headerPage.selectHeaderOption(appConstants.menuItems.items);
+        // await this.headerPage.selectHeaderOption(appConstants.menuItems.dashboard);
+        // await this.headerPage.selectHeaderOption(appConstants.menuItems.items);
+        // await this.headerPage.selectHeaderOption(appConstants.menuItems.dashboard);
+        // await this.headerPage.selectHeaderOption(appConstants.menuItems.items);
+        // await this.headerPage.selectHeaderOption(appConstants.menuItems.dashboard);
+        // await this.headerPage.selectHeaderOption(appConstants.menuItems.items);
+        // await this.headerPage.selectHeaderOption(appConstants.menuItems.dashboard);
         await this.headerPage.selectHeaderOption(appConstants.menuItems.items);
+        
         await this.itemsPage.selectAction(appConstants.categoryActions.addCategory);
         await this.itemsPage.createCategory(categoryName);
         await this.itemsPage.navigateToCategory(categoryName);
         await this.categoryPage.selectAction(appConstants.categoryActions.addItem);
         await this.categoryPage.createItem(itemName, categoryName);
-        await this.headerPage.selectHeaderOption(appConstants.menuItems.items);
-        await this.itemsPage.navigateToCategory(categoryName);
+        //await this.headerPage.selectHeaderOption(appConstants.menuItems.items);
+       // await this.itemsPage.navigateToCategory(categoryName);
         await this.categoryPage.bookItem(itemName);
+        await this.bookingPage.openStartDatePicker();
         await this.bookingPage.selectStartDate(booking.startDate);
+        await this.bookingPage.openEndDatePicker();
         await this.bookingPage.selectEndDate(booking.endDate);
         await this.bookingPage.confirmBooking();
         await this.headerPage.selectHeaderOption(appConstants.menuItems.bookings);
         await this.bookingsPage.selectBookingsAction(appConstants.bookingActions.myBookings);
-        await this.bookingsPage.validateBooking(booking);    
+        await this.bookingsPage.validateBooking(booking);
     });
 });
 

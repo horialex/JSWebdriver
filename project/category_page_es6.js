@@ -30,12 +30,14 @@ class CategoryPage extends BasePage {
 
     async navigateToItem(itemName) {
         let element = await this.getElementFromList(this.elements.itemsList, itemName);
-        await this.waitAndClick(element);
+        await this.clickWhenClickable(element);
     }
 
     async bookItem(itemName) {
-        let bookElement = await this.getWebElementFromListWhereTextMatches(this.elements.itemContainersList, itemName, By.css('h3 span a'), By.css("button[class$='book-item']"));
-        await this.waitAndClick(bookElement);
+        let _this = this;
+        console.log("In book item");
+        let bookElement = await _this.getWebElementFromListWhereTextMatches(_this.elements.itemContainersList, itemName, By.css('h3 span a'), By.css("button[class$='book-item']"));
+        await _this.clickWhenClickable(bookElement);
     }
     
 }

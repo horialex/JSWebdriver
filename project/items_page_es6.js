@@ -24,9 +24,11 @@ class ItemsPage extends BasePage {
     }
 
     async navigateToCategory(categoryName) {
-        await this.refreshPage();
-        let element = await this.getElementFromList(this.elements.categoriesList, categoryName);
-        await this.waitAndClick(element);
+       let _this = this;
+        console.log("In navigate to category")
+        await _this.refreshPage();
+        let element = await _this.getElementFromList(_this.elements.categoriesList, categoryName);
+        await _this.clickWhenClickable(element);
     }
 }
 module.exports = ItemsPage;

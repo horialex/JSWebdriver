@@ -12,7 +12,7 @@
   },
   "betterScripts": {
     "qa": {
-      "command": "mocha ./test/bookItem.test_es6.js --reporter mochawesome --reporter-options autoOpen=true --reportTitle 'My Project Results'",
+      "command": "mocha ./test/bookItem.test_es6.js",
       "env": {
         "NODE_ENV": "qa"
       }

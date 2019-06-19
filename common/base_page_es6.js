@@ -100,21 +100,22 @@ class BasePage {
 
     async clickWhenClickable(element) {
         let _this = this;
-        
+        console.log("ZZZ")
         let contor = 0;
         while(contor < 10){
             await _this.driver.findElement(By.css("div[class='ww-loading']"))
             .then(async function (result) {
             _this.sleep(1000);
-           
+            console.log("In Promise phase 1")
     
             }).catch(async function (error) {
                 contor=10;
-              
+                console.log("In Catch clause")
+                element.click();
             });
             contor++;
         }
-        element.click();
+       // element.click();
         
     }
 
