@@ -84,8 +84,8 @@ class BasePage {
             _this.sleep(1000);
             }).catch(async function (error) {
                 contor=10;
-                element.click();
-                _this.sleep(100);
+                await element.click();
+                await _this.sleep(100);
             });
             contor++;
         }
