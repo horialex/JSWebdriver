@@ -18,17 +18,13 @@ class BookingPage extends BasePage {
     async openStartDatePicker(){
         let _this = this;  
         await _this.sleep(500);
-        console.log("Intra in booking start Date");
         await _this.clickOnElement(_this.elements.startBookingDatePicker);
-        console.log("Dupa ce intra in booking start Date");
     }
 
     async openEndDatePicker(){
         let _this = this;  
-        console.log("Intra in booking start Date");
         await _this.sleep(500);
         await _this.clickOnElement(_this.elements.endBookingDatePicker);
-        console.log("Dupa ce intra in booking start Date");
     }
 
     async selectStartDate(startDate) {
@@ -68,18 +64,17 @@ class BookingPage extends BasePage {
     async selectMonth(month) {
         let m = await this.getElementFromList(By.css("div[class*='picker-open'] div.datepicker-months tbody span"), month);
         await this.clickWhenClickable(m);
-        // await m.click();
     }
 
 
     async selectDay(day) {
         let d = await this.getElementFromList(By.css("div[class*='picker-open'] div.datepicker-days tbody tr td[class*='day']"), day);
         await this.clickWhenClickable(d);
-        // d.click();
     }
 
     async confirmBooking() {
-        await this.clickOnElement(this.elements.saveBookingButton);
+        let _this = this;
+        await _this.clickOnElement(_this.elements.saveBookingButton);
     }
 
 

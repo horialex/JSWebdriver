@@ -18,7 +18,7 @@ module.exports = {
     bookingFactory: function () {
         return {
             itemName: "",
-            startDate: utils.getCurrentDate(),
+            startDate: utils.getDateInFuture(1),
             endDate: utils.getDateInFuture(10)
         }
     }
