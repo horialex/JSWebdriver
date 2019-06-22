@@ -74,49 +74,21 @@ class BasePage {
         });
     }
 
-    //TREBUIE RESCRISA
-    async waitAndClick(element) {
-        // let _this = this;
-        // await _this.scrollToElement(element);
-        // await _this.clickWhenClickable(element);
-        // await _this.sleep(300);
-        // // let _this = this;
-        // // if(await _this.pageActive()){
-        // //     this.waitAndClick(element); 
-        // // }else{
-        // // await _this.scrollToElement(element);
-        // // await _this.sleep(300);
-        // // await element.click();
-        // // }
-        // // while (await _this.pageActive()) {
-        // //     console.log("A");
-        // //     // await _this.sleep(50);
-        // //     console.log("AA");
-        // // }
-        // await _this.scrollToElement(element);
-        // await _this.sleep(300);
-   
-    }
-
+  
     async clickWhenClickable(element) {
         let _this = this;
-        console.log("ZZZ")
         let contor = 0;
         while(contor < 10){
             await _this.driver.findElement(By.css("div[class='ww-loading']"))
             .then(async function (result) {
             _this.sleep(1000);
-            console.log("In Promise phase 1")
-    
             }).catch(async function (error) {
                 contor=10;
-                console.log("In Catch clause")
-                element.click();
+                await element.click();
+                await _this.sleep(100);
             });
             contor++;
         }
-       // element.click();
-        
     }
 
     //This method is not common - this is project specific - this is do avoid performing actions when the loading spinner is present
@@ -126,10 +98,8 @@ class BasePage {
         let flag = false;
         await _this.driver.findElement(By.css("div[class='ww-loading']"))
             .then(function (result) {
-                console.log("B");
                 flag = true;
             }).catch(function (error) {
-                console.log("C");
                 flag = false;
             });
         return flag;
