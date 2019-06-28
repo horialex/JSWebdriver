@@ -18,7 +18,9 @@ class BookingPage extends BasePage {
     async openStartDatePicker(){
         let _this = this;  
         await _this.sleep(500);
+        console.log("AA")
         await _this.clickOnElement(_this.elements.startBookingDatePicker);
+        console.log("BB")
     }
 
     async openEndDatePicker(){

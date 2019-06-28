@@ -8,7 +8,7 @@ const should = chai.should();
 chai.use(chaiAsPromised);
 
 class BasePage {
-    constructor(driver, waitTimeout = 10000) {
+    constructor(driver, waitTimeout = 15000) {
         this.driver = driver;
         this.waitTimeout = waitTimeout;
     }
@@ -23,7 +23,7 @@ class BasePage {
 
     async clickOnElement(locator) {
         let _this = this;
-        await _this.driver.wait(until.elementLocated(locator)).then(async function () {
+        await _this.driver.wait(until.elementLocated(locator), _this.waitTimeout).then(async function () {
             await _this.driver.findElement(locator).then(async function (element) {
                 await _this.clickWhenClickable(element);
             });
@@ -42,7 +42,7 @@ class BasePage {
 
     async find(locator) {
         let _this = this
-        return await _this.driver.wait(until.elementLocated(locator), 5000).then(async function () {
+        return await _this.driver.wait(until.elementLocated(locator), _this.waitTimeout).then(async function () {
             return await _this.driver.findElement(locator);
         });
     }
@@ -61,7 +61,8 @@ class BasePage {
     async clickOnElementInList(listLocator, text) {
         var _this = this;
         await _this.sleep(1000);
-        await _this.driver.wait(until.elementsLocated(listLocator), 5000).then(async function () {
+        await _this.driver.wait(until.elementsLocated(listLocator), _this.waitTimeout
+        ).then(async function () {
             await _this.driver.findElements(listLocator).then(async function (elements) {
                 await elements.forEach(async function (element) {
                     await element.getText().then(async function (txt) {
@@ -85,7 +86,6 @@ class BasePage {
             }).catch(async function (error) {
                 contor=10;
                 await element.click();
-                await _this.sleep(100);
             });
             contor++;
         }
@@ -130,7 +130,6 @@ class BasePage {
             await _this.driver.findElements(listLocator).then(async function (list) {
                 list.forEach(async function (elem) {
                     await elem.findElement(textLocator).getText().then(async function (elemText) {
-
                         if (text.trim() === elemText.trim()) {
 
                             myElement = await elem.findElement(subElementLocator);

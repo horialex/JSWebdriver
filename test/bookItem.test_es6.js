@@ -13,21 +13,12 @@ const BookingPage = require("../project/booking_page_es6.js");
 const BookingsPage = require("../project/bookings_page_es6.js");
 
 
-var o;
-var webdriver = require('selenium-webdriver'),
-    chrome = require('selenium-webdriver/chrome');
-
-
 var driver;
 
 describe('Book Item item', function () {
     this.timeout(appConstants.mochaTimeout);
     beforeEach(async function () {
-        o = new chrome.Options();
-        o.addArguments("start-maximized"),
-            o.addArguments('disable-infobars');
-        // driver = await driverUtils(process.env.browser);
-        driver = new webdriver.Builder().withCapabilities(webdriver.Capabilities.chrome()).setChromeOptions(o).build();
+        driver = await driverUtils(process.env.browser);
         driver.manage().window().maximize();
         this.homePage = new HomePage(driver);
         this.loginPage = new LoginPage(driver);
@@ -51,14 +42,7 @@ describe('Book Item item', function () {
         await this.homePage.navigate();
         await this.homePage.openLoginForm();
         await this.loginPage.login(config().ADMIN_USER, config().ADMIN_PASS);
-        // await this.headerPage.selectHeaderOption(appConstants.menuItems.items);
-        // await this.headerPage.selectHeaderOption(appConstants.menuItems.dashboard);
-        // await this.headerPage.selectHeaderOption(appConstants.menuItems.items);
-        // await this.headerPage.selectHeaderOption(appConstants.menuItems.dashboard);
-        // await this.headerPage.selectHeaderOption(appConstants.menuItems.items);
-        // await this.headerPage.selectHeaderOption(appConstants.menuItems.dashboard);
-        // await this.headerPage.selectHeaderOption(appConstants.menuItems.items);
-        // await this.headerPage.selectHeaderOption(appConstants.menuItems.dashboard);
+     
         await this.headerPage.selectHeaderOption(appConstants.menuItems.items);
         
         await this.itemsPage.selectAction(appConstants.categoryActions.addCategory);
@@ -66,8 +50,6 @@ describe('Book Item item', function () {
         await this.itemsPage.navigateToCategory(categoryName);
         await this.categoryPage.selectAction(appConstants.categoryActions.addItem);
         await this.categoryPage.createItem(itemName, categoryName);
-        //await this.headerPage.selectHeaderOption(appConstants.menuItems.items);
-       // await this.itemsPage.navigateToCategory(categoryName);
         await this.categoryPage.bookItem(itemName);
         await this.bookingPage.openStartDatePicker();
         await this.bookingPage.selectStartDate(booking.startDate);

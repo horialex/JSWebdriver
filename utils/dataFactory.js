@@ -19,7 +19,7 @@ module.exports = {
         return {
             itemName: "",
             startDate: utils.getDateInFuture(1),
-            endDate: utils.getDateInFuture(10)
+            endDate: utils.getDateInFuture(2)
         }
     }
 }
