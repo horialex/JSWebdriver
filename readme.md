@@ -1,5 +1,6 @@
 # JSWebdriver
-To run the app use command:  browser=chrome npm run qa
+To run the app use command on linux:  browser=chrome npm run qa
+To run the tests on windows run: npm run qa - or npm run "name_of_a_script"
 
 To use the project install the following npm dependencies:
 * selenium-webdriver
