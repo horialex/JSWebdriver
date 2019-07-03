@@ -42,18 +42,16 @@ describe('Book Item item', function () {
         await this.homePage.navigate();
         await this.homePage.openLoginForm();
         await this.loginPage.login(config().ADMIN_USER, config().ADMIN_PASS);
-     
         await this.headerPage.selectHeaderOption(appConstants.menuItems.items);
-        
         await this.itemsPage.selectAction(appConstants.categoryActions.addCategory);
         await this.itemsPage.createCategory(categoryName);
         await this.itemsPage.navigateToCategory(categoryName);
         await this.categoryPage.selectAction(appConstants.categoryActions.addItem);
         await this.categoryPage.createItem(itemName, categoryName);
         await this.categoryPage.bookItem(itemName);
-        await this.bookingPage.openStartDatePicker();
+       
+       
         await this.bookingPage.selectStartDate(booking.startDate);
-        await this.bookingPage.openEndDatePicker();
         await this.bookingPage.selectEndDate(booking.endDate);
         await this.bookingPage.confirmBooking();
         await this.headerPage.selectHeaderOption(appConstants.menuItems.bookings);

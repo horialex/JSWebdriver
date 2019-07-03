@@ -35,7 +35,6 @@ class CategoryPage extends BasePage {
 
     async bookItem(itemName) {
         let _this = this;
-        console.log("In book item");
         let bookElement = await _this.getWebElementFromListWhereTextMatches(_this.elements.itemContainersList, itemName, By.css('h3 span a'), By.css("button[class$='book-item']"));
         await _this.clickWhenClickable(bookElement);
     }

@@ -25,7 +25,6 @@ class ItemsPage extends BasePage {
 
     async navigateToCategory(categoryName) {
        let _this = this;
-        console.log("In navigate to category")
         await _this.refreshPage();
         let element = await _this.getElementFromList(_this.elements.categoriesList, categoryName);
         await _this.clickWhenClickable(element);

@@ -23,8 +23,8 @@ class BasePage {
 
     async clickOnElement(locator) {
         let _this = this;
-        await _this.driver.wait(until.elementLocated(locator), _this.waitTimeout).then(async function () {
-            await _this.driver.findElement(locator).then(async function (element) {
+         await _this.driver.wait(until.elementLocated(locator), _this.waitTimeout).then(async function () {
+             await _this.driver.findElement(locator).then(async function (element) {
                 await _this.clickWhenClickable(element);
             });
         });
@@ -61,10 +61,10 @@ class BasePage {
     async clickOnElementInList(listLocator, text) {
         var _this = this;
         await _this.sleep(1000);
-        await _this.driver.wait(until.elementsLocated(listLocator), _this.waitTimeout
+         await _this.driver.wait(until.elementsLocated(listLocator), _this.waitTimeout
         ).then(async function () {
-            await _this.driver.findElements(listLocator).then(async function (elements) {
-                await elements.forEach(async function (element) {
+             await _this.driver.findElements(listLocator).then(async function (elements) {
+                 await elements.forEach(async function (element) {
                     await element.getText().then(async function (txt) {
                         if (txt.trim() === text.trim()) {
                             await _this.clickWhenClickable(element);
@@ -81,13 +81,14 @@ class BasePage {
         let contor = 0;
         while(contor < 10){
             await _this.driver.findElement(By.css("div[class='ww-loading']"))
-            .then(async function (result) {
-            _this.sleep(1000);
+            .then(async function (result) { 
+             await _this.sleep(1500);
             }).catch(async function (error) {
-                contor=10;
-                await element.click();
+ 
+                 contor=10;
+                 await element.click();
             });
-            contor++;
+            await contor++;
         }
     }
 
@@ -131,7 +132,6 @@ class BasePage {
                 list.forEach(async function (elem) {
                     await elem.findElement(textLocator).getText().then(async function (elemText) {
                         if (text.trim() === elemText.trim()) {
-
                             myElement = await elem.findElement(subElementLocator);
                         }
                     })

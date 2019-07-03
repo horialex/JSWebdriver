@@ -18,8 +18,8 @@ module.exports = {
     bookingFactory: function () {
         return {
             itemName: "",
-            startDate: utils.getDateInFuture(1),
-            endDate: utils.getDateInFuture(2)
+            startDate: utils.getDateInFuture(3),
+            endDate: utils.getDateInFuture(4)
         }
     }
 }
